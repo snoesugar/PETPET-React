@@ -1,0 +1,84 @@
+/*下拉式選單箭頭*/
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-toggle {
+  position: relative;
+  padding-right: 2rem; /* 給箭頭留空間 */
+}
+
+.dropdown-toggle::before {
+  content: "▲\A▼";
+  white-space: pre;
+  position: absolute;
+  right: .75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: .55rem;
+  line-height: .6rem;
+  color: currentColor;
+}
+
+.btn-fit {
+  display: inline-flex;
+  width: fit-content;
+  max-width: fit-content;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/*本月熱門保姆*/
+.card-person-img {
+  width: 100px;
+  height: 100px;
+  top: 120px;
+}
+
+/*線上預約*/
+.overlay {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明遮罩 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease; /* 漸變效果 */
+}
+
+/* hover 時遮罩消失 */
+.position-relative:hover .overlay {
+  background-color: rgba(0, 0, 0, 0); /* 完全透明 */
+}
+
+/*目前已有*/
+.index-back-img {
+  background-image: url("/index-9.jpeg");
+  background-position: center center; /* 居中 */
+  background-repeat: no-repeat;       /* 不重複 */
+  background-size: cover;             /* 填滿容器，保持比例 */
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.h-120 {
+  height: 120px;
+}
+
+.h-350 {
+  height: 350px;
+}
+
+.w-120 {
+  width: 120px;
+}
+
+.w-210 {
+  width: 210px;
+}
