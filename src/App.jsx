@@ -29,7 +29,7 @@ function App() {
         </nav>
         <div className="row">
           <div className="col-5">
-            <img className="img-fluid" src="./public/index-1.png" alt="index-1" />
+            <img className="img-fluid" src={`${import.meta.env.BASE_URL}index-1.png`} alt="index-1" />
           </div>
           <div className="col-7 d-flex flex-column">
             <div className="flex-grow-1 d-flex flex-column justify-content-center">
@@ -86,8 +86,8 @@ function App() {
         <div className="row">
           <div className="col-4">
             <div className="card shadow">
-              <img src="./public/index-2.jpeg" className="object-fit-cover h-120 p-1 position-relative" alt="index-2" />
-              <img src="./public/person-1.png" className="card-person-img position-absolute start-50 translate-middle" alt="person-1" />
+              <img src={`${import.meta.env.BASE_URL}index-2.jpeg`} className="object-fit-cover h-120 p-1 position-relative" alt="index-2" />
+              <img src={`${import.meta.env.BASE_URL}person-1.png`} className="card-person-img position-absolute start-50 translate-middle" alt="person-1" />
               <div className="card-body pb-6 pt-9 text-center text-primary">
                 <h5 className="card-title fs-7 mb-1">Jamie</h5>
                 <p className="card-text mb-3">寄宿、美容、寵物行為訓練</p>
@@ -113,8 +113,8 @@ function App() {
           </div>
           <div className="col-4">
             <div className="card shadow">
-              <img src="./public/index-3.jpeg" className="object-fit-cover h-120 p-1 position-relative" alt="index-2" />
-              <img src="./public/person-2.png" className="card-person-img position-absolute start-50 translate-middle" alt="person-1" />
+              <img src={`${import.meta.env.BASE_URL}index-3.jpeg`} className="object-fit-cover h-120 p-1 position-relative" alt="index-3" />
+              <img src={`${import.meta.env.BASE_URL}person-2.png`} className="card-person-img position-absolute start-50 translate-middle" alt="person-1" />
               <div className="card-body pb-6 pt-9 text-center text-primary">
                 <h5 className="card-title fs-7 mb-1">Eric</h5>
                 <p className="card-text mb-3">寄宿、美容</p>
@@ -140,8 +140,8 @@ function App() {
           </div>
           <div className="col-4">
             <div className="card shadow">
-              <img src="./public/index-4.jpeg" className="object-fit-cover h-120 p-1 position-relative" alt="index-2" />
-              <img src="./public/person-3.png" className="card-person-img position-absolute start-50 translate-middle" alt="person-1" />
+              <img src={`${import.meta.env.BASE_URL}index-4.jpeg`} className="object-fit-cover h-120 p-1 position-relative" alt="index-4" />
+              <img src={`${import.meta.env.BASE_URL}person-3.png`} className="card-person-img position-absolute start-50 translate-middle" alt="person-1" />
               <div className="card-body pb-6 pt-9 text-center text-primary">
                 <h5 className="card-title fs-7 mb-1">Yvonne</h5>
                 <p className="card-text mb-3">美容、寵物行為訓練</p>
@@ -174,7 +174,7 @@ function App() {
         <div className="d-flex gap-1 h-350">
           <a href="#" className="position-relative w-31">
             <img
-              src="./public/index-5.jpeg"
+              src={`${import.meta.env.BASE_URL}index-5.jpeg`}
               alt="index-5"
               className="w-100 h-100 object-fit-cover rounded-1"
             />
@@ -184,7 +184,7 @@ function App() {
           </a>
           <a href="#" className="position-relative w-27">
             <img
-              src="./public/index-6.jpeg"
+              src={`${import.meta.env.BASE_URL}index-6.jpeg`}
               alt="index-6"
               className="w-100 h-100 object-fit-cover rounded-1"
             />
@@ -195,7 +195,7 @@ function App() {
           <div className="d-flex flex-column gap-1 w-24">
             <a href="#" className="position-relative w-100 h-49">
               <img
-                src="./public/index-7.jpeg"
+                src={`${import.meta.env.BASE_URL}index-7.jpeg`}
                 alt="index-7"
                 className="w-100 h-100 object-fit-cover rounded-1"
               />
@@ -205,7 +205,7 @@ function App() {
             </a>
             <a href="#" className="position-relative w-100 h-49">
               <img
-                src="./public/index-8.jpeg"
+                src={`${import.meta.env.BASE_URL}index-8.jpeg`}
                 alt="index-8"
                 className="w-100 h-100 object-fit-cover rounded-1"
               />
@@ -216,7 +216,7 @@ function App() {
           </div>
           <a href="#" className="position-relative w-16">
             <img
-              src="./public/index-3.jpeg"
+              src={`${import.meta.env.BASE_URL}index-3.jpeg`}
               alt="index-3"
               className="w-100 h-100 object-fit-cover rounded-1"
             />
@@ -253,15 +253,15 @@ function App() {
         <div className="row">
           <div className="col-4">
             <p className="fs-7 text-primary">1.查詢想要的服務</p>
-            <img src="./public/index-10.png" alt="index-10" className="w-100" />
+            <img src={`${import.meta.env.BASE_URL}index-10.png`} alt="index-10" className="w-100" />
           </div>
           <div className="col-4">
             <p className="fs-7 text-primary">2.找到合適的保姆</p>
-            <img src="./public/index-11.png" alt="index-11" className="w-100" />
+            <img src={`${import.meta.env.BASE_URL}index-11.png`} alt="index-11" className="w-100" />
           </div>
           <div className="col-4">
             <p className="fs-7 text-primary">3.填寫資料完成預約</p>
-            <img src="./public/index-12.png" alt="index-12" className="w-100" />
+            <img src={`${import.meta.env.BASE_URL}index-12.png`} alt="index-12" className="w-100" />
           </div>
         </div>
       </div>
