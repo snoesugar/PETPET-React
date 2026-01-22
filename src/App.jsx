@@ -1,6 +1,67 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_drop_down" />
 
 function App() {
+  // 資料
+  // 狗品種清單
+  const dogList = [
+    '米格魯（比格犬）',
+    '拉布拉多尋回犬',
+    '黃金獵犬',
+    '柴犬',
+    '法國鬥牛犬',
+    '吉娃娃',
+    '博美犬',
+    '貴賓犬',
+    '馬爾濟斯',
+    '西施犬',
+    '哈士奇',
+    '邊境牧羊犬',
+    '德國牧羊犬',
+    '柯基犬',
+    '巴哥犬',
+    '杜賓犬',
+    '羅威納犬',
+    '臘腸犬',
+    '大麥町犬',
+    '約克夏梗',
+    '比熊犬',
+    '秋田犬',
+    '薩摩耶犬',
+    '英國鬥牛犬',
+    '聖伯納犬',
+  ]
+  // 服務項目
+  const service = [
+    '寄宿',
+    '美容',
+    '到府保母',
+    '遛狗保母',
+  ]
+  // 地區清單
+  const cityList = [
+    '臺北市',
+    '新北市',
+    '桃園市',
+    '臺中市',
+    '臺南市',
+    '高雄市',
+    '基隆市',
+    '新竹市',
+    '嘉義市',
+    '新竹縣',
+    '苗栗縣',
+    '彰化縣',
+    '南投縣',
+    '雲林縣',
+    '嘉義縣',
+    '屏東縣',
+    '宜蘭縣',
+    '花蓮縣',
+    '臺東縣',
+    '澎湖縣',
+    '金門縣',
+    '連江縣',
+  ]
 
   return (
     <>
@@ -37,38 +98,44 @@ function App() {
                 <h2 className="mb-4 fw-bold">寵物服務，盡在 PETPET</h2>
                 <p className="fs-6 fw-bold">當您的毛孩有需要時，幫您找到最合適的服務者！</p>
               </div>
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <div class="dropdown">
-                  <button class="btn btn-white border dropdown-toggle text-gray-40 w-120 text-start rounded-end-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                <div className="dropdown">
+                  <button className="btn btn-white border dropdown-toggle text-gray-40 w-120 text-start rounded-end-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     品種
                   </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {
+                      dogList.map((dog) => {
+                        return (<li><a className="dropdown-item" href="#" key={dog}>{dog}</a></li>)
+                      })
+                    }
                   </ul>
                 </div>
-                <div class="dropdown">
-                  <button class="btn btn-white border dropdown-toggle text-gray-40 w-210 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="dropdown">
+                  <button className="btn btn-white border dropdown-toggle text-gray-40 w-210 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     服務
                   </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {
+                      service.map((item) => {
+                        return (<li><a className="dropdown-item" href="#" key={item}>{item}</a></li>)
+                      })
+                    }
                   </ul>
                 </div>
-                <div class="dropdown">
-                  <button class="btn btn-white border dropdown-toggle text-gray-40 w-210 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="dropdown">
+                  <button className="btn btn-white border dropdown-toggle text-gray-40 w-210 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     地區
                   </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {
+                      cityList.map((city) => {
+                        return (<li><a className="dropdown-item" href="#" key={city}>{city}</a></li>)
+                      })
+                    }
                   </ul>
                 </div>
-                <button type="button" class="btn btn-orange-20 btn-fit px-6">搜尋</button>
+                <button type="button" className="btn btn-orange-20 btn-fit px-6">搜尋</button>
               </div>
             </div>
             <div className="text-end pe-13">
