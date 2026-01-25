@@ -255,7 +255,7 @@ const PetSitting = () => {
         </div>
         {/* 分頁 */}
         <nav aria-label="Page navigation example">
-          <ul className="pagination">
+          <ul className="pagination mb-11">
             <li className="page-item ms-auto">
               <a className="page-link py-2 px-4" href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>

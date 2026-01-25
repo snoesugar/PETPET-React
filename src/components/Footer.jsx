@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       {/* 有任何我們能幫助您的嗎？ */}
-      <div className="bg-yellow-20 mb-11">
+      <div className="bg-yellow-20 position-relative">
         <div className="container-lg text-primary py-7">
           <h2 className="mb-2">有任何我們能幫助您的嗎？</h2>
           <p className="fs-7 fw-medium mb-0">輸入電子信箱</p>
@@ -15,8 +15,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="bg-white py-11 position-relative"></div>
       {/* footer */}
-      <div className="container-lg mb-6">
+      <div className="container-lg mb-6 bg-white position-relative">
         <div className="row">
           <div className="col-3">
             <div className="mb-7">

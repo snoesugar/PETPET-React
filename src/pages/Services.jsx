@@ -87,51 +87,53 @@ const Services = () => {
     <div className="container-lg mt-12">
       <div className="row">
         {/* 左側文字 */}
-        <div className="col-6">
-          <div className="mb-10">
-            <div className="d-flex mb-4">
-              <h3 className="fw-bold text-primary me-4">毛孩好家</h3>
-              <div className="stars d-flex align-items-center">
-                <span className="star-big"></span>
-                <span className="star-big"></span>
-                <span className="star-big"></span>
-                <span className="star-big"></span>
-                <span className="star-big"></span>
+        <aside className="col-6 position-relative">
+          <div className="position-fixed">
+            <div className="mb-10">
+              <div className="d-flex mb-4">
+                <h3 className="fw-bold text-primary me-4">毛孩好家</h3>
+                <div className="stars d-flex align-items-center">
+                  <span className="star-big"></span>
+                  <span className="star-big"></span>
+                  <span className="star-big"></span>
+                  <span className="star-big"></span>
+                  <span className="star-big"></span>
+                </div>
+              </div>
+              <p className="fs-6 fw-bold text-primary mb-2">給予毛孩最舒適的環境是我們的職責！</p>
+              <p className="fw-medium text-primary mb-0">已提供 52 筆服務、並獲得 30 個評價</p>
+            </div>
+            <div className="mb-8">
+              <p className="fs-7 fw-bold text-primary mb-4">服務內容</p>
+              <ul className="list-unstyled">
+                <li className="fw-medium text-primary mb-2">寄宿 NT$ 450 /晚</li>
+                <li className="fw-medium text-primary mb-0">美容洗澡 NT$ 500 （含剪指甲、剃腳底毛、清耳朵）</li>
+                <li className="fw-medium fs-10 text-orange-20 mb-2">個性貓另加價</li>
+                <li className="fw-medium text-primary mb-2">到府保姆 NT$ 550 /晚</li>
+              </ul>
+            </div>
+            <div className="mb-10 d-flex">
+              <div className="me-3">
+                <span className="material-icons text-orange-20">
+                  room
+                </span>
+              </div>
+              <div className="fw-medium">
+                <p className="text-primary mb-0">高雄市鹽埕區七賢三路123號</p>
+                <p className="text-primary mb-0">服務區域：高雄市 全區</p>
               </div>
             </div>
-            <p className="fs-6 fw-bold text-primary mb-2">給予毛孩最舒適的環境是我們的職責！</p>
-            <p className="fw-medium text-primary mb-0">已提供 52 筆服務、並獲得 30 個評價</p>
-          </div>
-          <div className="mb-8">
-            <p className="fs-7 fw-bold text-primary mb-4">服務內容</p>
-            <ul className="list-unstyled">
-              <li className="fw-medium text-primary mb-2">寄宿 NT$ 450 /晚</li>
-              <li className="fw-medium text-primary mb-0">美容洗澡 NT$ 500 （含剪指甲、剃腳底毛、清耳朵）</li>
-              <li className="fw-medium fs-10 text-orange-20 mb-2">個性貓另加價</li>
-              <li className="fw-medium text-primary mb-2">到府保姆 NT$ 550 /晚</li>
-            </ul>
-          </div>
-          <div className="mb-10 d-flex">
-            <div className="me-3">
-              <span className="material-icons text-orange-20">
-                room
-              </span>
-            </div>
-            <div className="fw-medium">
-              <p className="text-primary mb-0">高雄市鹽埕區七賢三路123號</p>
-              <p className="text-primary mb-0">服務區域：高雄市 全區</p>
+            <div className="row">
+              <div className="col-5">
+                <button type="button" className="fs-7 bg-white text-orange-20 border-1 border-orange-20 py-2 w-100 rounded-1">聯繫</button>
+              </div>
+              <div className="col-7">
+                <button type="button" className="fs-7 bg-orange-20 text-white border-1 border-orange-20 py-2 w-100 rounded-1">立刻預約</button>
+              </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-5">
-              <button type="button" className="fs-7 bg-white text-orange-20 border-1 border-orange-20 py-2 w-100 rounded-1">聯繫</button>
-            </div>
-            <div className="col-7">
-              <button type="button" className="fs-7 bg-orange-20 text-white border-1 border-orange-20 py-2 w-100 rounded-1">立刻預約</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-6">
+        </aside>
+        <main className="col-6">
           {/* 主圖 */}
           <div className="mb-3">
             <img
@@ -259,7 +261,7 @@ const Services = () => {
               }
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   )
