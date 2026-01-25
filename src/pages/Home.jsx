@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ServiceCard } from '../components/Components'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   // 資料
@@ -112,7 +113,7 @@ const Home = () => {
               <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                 <div className="dropdown">
                   <button
-                    className="btn btn-white border dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
                     type="button"
                     data-bs-toggle="dropdown"
                   >
@@ -133,7 +134,7 @@ const Home = () => {
                   </ul>
                 </div>
                 <div className="dropdown">
-                  <button className="btn btn-white border dropdown-toggle fs-7 text-gray-40 w-120 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-120 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     {selectedService}
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -203,7 +204,7 @@ const Home = () => {
         <h3 className="fw-bold text-primary mb-1">線上預約</h3>
         <p className="fs-7 text-primary mb-3">即時瞭解您的需求，安排最適合毛孩的寵物保姆！</p>
         <div className="d-flex gap-1 h-350">
-          <a href="#" className="position-relative w-31">
+          <Link to="/petsitting" className="position-relative w-31">
             <img
               src={`${import.meta.env.BASE_URL}index-5.jpeg`}
               alt="index-5"
@@ -212,7 +213,7 @@ const Home = () => {
             <div className="overlay d-flex justify-content-center align-items-center rounded-1">
               <span className="text-white fs-6 fw-bold">寵物寄宿</span>
             </div>
-          </a>
+          </Link>
           <a href="#" className="position-relative w-27">
             <img
               src={`${import.meta.env.BASE_URL}index-6.jpeg`}
@@ -224,7 +225,7 @@ const Home = () => {
             </div>
           </a>
           <div className="d-flex flex-column gap-1 w-24">
-            <a href="#" className="position-relative w-100 h-49">
+            <a href="#" className="position-relative w-100 h-50">
               <img
                 src={`${import.meta.env.BASE_URL}index-7.jpeg`}
                 alt="index-7"
