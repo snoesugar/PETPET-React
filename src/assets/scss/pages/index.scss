@@ -63,20 +63,82 @@
   background-size: cover;             /* 填滿容器，保持比例 */
 }
 
+/*熱門寄宿*/
+.stars {
+  display: flex;
+  gap: 4px; /* 星星間距 */
+}
+
+.star {
+  width: 16px;
+  height: 15px;
+  background-color: #F0AD25; /* 你給的黃色 */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  ); /* 星形 */
+}
+
+.star-big {
+  width: 20px;
+  height: 20px;
+  background-color: #F0AD25; /* 你給的黃色 */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  ); /* 星形 */
+}
+
 .object-fit-cover {
   object-fit: cover;
+}
+
+.h-96 {
+  height: 96px;
 }
 
 .h-120 {
   height: 120px;
 }
 
+.h-128 {
+  height: 128px;
+}
+
 .h-350 {
   height: 350px;
 }
 
+.h-440 {
+  height: 440px;
+}
+
+.w-96 {
+  width: 96px;
+}
+
 .w-120 {
   width: 120px;
+}
+
+.w-160 {
+  width: 160px;
 }
 
 .w-210 {

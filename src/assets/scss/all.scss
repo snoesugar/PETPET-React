@@ -6,16 +6,12 @@
 
 // 先自訂變數（覆蓋 Bootstrap 變數）
 @import "./helpers/variables";  
-@import "bootstrap/scss/maps";
-@import './helpers/utilities';
-
-// 再引入 Bootstrap 變數、maps、mixins
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 
 // 工具類（可自訂的 utilities）
-// @import './utilities';
+@import './helpers/utilities';
 
 // Bootstrap 核心
 @import "bootstrap/scss/bootstrap";

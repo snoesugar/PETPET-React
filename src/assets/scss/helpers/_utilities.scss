@@ -830,6 +830,7 @@ $utilities: map-merge(
         25: 25%,
         27: 27%,   // custom
         31: 31%,   // custom
+        32: 32%,   // custom
         45: 45%,   // custom
         50: 50%,
         66: 66%,   // custom
@@ -890,5 +891,35 @@ $utilities: map-merge(
         8: var(--#{$prefix}border-radius-5xl),     //100px
       )
     ),
+  )
+);
+
+// 自訂義背景色
+$utilities: map-merge(
+  $utilities,
+  (
+    "background-color": (
+      property: background-color,
+      class: bg,
+      local-vars: (
+        "bg-opacity": 1
+      ),
+      values: map-merge(
+        $utilities-bg-colors,
+        (
+          "gray-0": #FAFAFA,
+          "gray-10": #00000029,
+          "gray-20": #CED4DA,
+          "gray-30": #818A91,
+          "gray-40": #6C757D,
+
+          "yellow-10": #F8B52E,
+          "yellow-20": #F0AD25,
+
+          "orange-10": #D5411A,
+          "orange-20": #D54100,
+        )
+      )
+    )
   )
 );

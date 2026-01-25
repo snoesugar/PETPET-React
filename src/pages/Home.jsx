@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import Navbar from '../components/Navbar'
-import ServiceCard from '../components/ServiceCard'
+import { ServiceCard } from '../components/Components'
 
 const Home = () => {
   // 資料
