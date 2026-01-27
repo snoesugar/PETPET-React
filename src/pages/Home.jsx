@@ -95,6 +95,9 @@ const Home = () => {
   const [selectedDog, setSelectedDog] = useState('品種')
   const [selectedService, setSelectedService] = useState('服務')
   const [selectedCity, setSelectedCity] = useState('地區')
+  const [openDog, setOpenDog] = useState(false)
+  const [openService, setOpenService] = useState(false)
+  const [openCity, setOpenCity] = useState(false)
 
   return (
     <>
@@ -111,63 +114,86 @@ const Home = () => {
                 <p className="fs-6 fw-bold">當您的毛孩有需要時，幫您找到最合適的服務者！</p>
               </div>
               <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                <div className="dropdown">
+                <div className="dropdown position-relative">
                   <button
-                    className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
                     type="button"
-                    data-bs-toggle="dropdown"
+                    className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    onClick={() => setOpenDog(o => !o)}
                   >
                     {selectedDog}
                   </button>
-                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    {dogList.map(dog => (
-                      <li key={dog}>
-                        <button
-                          type="button"
-                          className="dropdown-item"
-                          onClick={() => setSelectedDog(dog)}
-                        >
-                          {dog}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+                  {openDog && (
+                    <ul className="dropdown-menu show">
+                      {dogList.map(dog => (
+                        <li key={dog}>
+                          <button
+                            type="button"
+                            className="dropdown-item"
+                            onClick={() => {
+                              setSelectedDog(dog)
+                              setOpenDog(false)
+                            }}
+                          >
+                            {dog}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                <div className="dropdown">
-                  <button className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-120 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="dropdown position-relative">
+                  <button
+                    type="button"
+                    className="btn btn-white border border-end-0 rounded-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    onClick={() => setOpenService(o => !o)}
+                  >
                     {selectedService}
                   </button>
-                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    {service.map(item => (
-                      <li key={item}>
-                        <button
-                          type="button"
-                          className="dropdown-item"
-                          onClick={() => setSelectedService(item)}
-                        >
-                          {item}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+                  {openService && (
+                    <ul className="dropdown-menu show">
+                      {service.map(item => (
+                        <li key={item}>
+                          <button
+                            type="button"
+                            className="dropdown-item"
+                            onClick={() => {
+                              setSelectedService(item)
+                              setOpenService(false)
+                            }}
+                          >
+                            {item}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                <div className="dropdown">
-                  <button className="btn btn-white border dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="dropdown position-relative">
+                  <button
+                    type="button"
+                    className="btn btn-white border border-end-0 rounded-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    onClick={() => setOpenCity(o => !o)}
+                  >
                     {selectedCity}
                   </button>
-                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    {cityList.map(city => (
-                      <li key={city}>
-                        <button
-                          type="button"
-                          className="dropdown-item"
-                          onClick={() => setSelectedCity(city)}
-                        >
-                          {city}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+                  {openCity && (
+                    <ul className="dropdown-menu show">
+                      {cityList.map(city => (
+                        <li key={city}>
+                          <button
+                            type="button"
+                            className="dropdown-item"
+                            onClick={() => {
+                              setSelectedCity(city)
+                              setOpenCity(false)
+                            }}
+                          >
+                            {city}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <button type="button" className="btn btn-orange-20 btn-fit fs-7 px-6">搜尋</button>
               </div>
