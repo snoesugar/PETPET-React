@@ -308,6 +308,7 @@ $yellow-20: #F0AD25;
 
 $orange-10: #D5411A;
 $orange-20: #D54100;
+$orange-30: #DA3A1A;
 
 
 // scss-docs-start theme-color-variables
@@ -341,6 +342,7 @@ $theme-colors: (
   "yellow-20":  $yellow-20, // custom 
   "orange-10":  $orange-10, // custom
   "orange-20":  $orange-20, // custom 
+  "orange-30":  $orange-30, // custom 
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -1224,8 +1226,8 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 // Navbar
 
 // scss-docs-start navbar-variables
-$navbar-padding-y:                  $spacer * 1 !default;
-$navbar-padding-x:                  85px;//null !default;
+$navbar-padding-y:                  5px;//$spacer * 1 !default; custom
+$navbar-padding-x:                  0px;//null !default;  custom
 
 $navbar-nav-link-padding-x:         .5rem !default;
 

@@ -105,6 +105,27 @@
   ); /* 星形 */
 }
 
+/*服務項目Modal*/
+.step-line {
+  height: 2px;
+  background-color: #DA3A1A;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* 線在圓點下面 */
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #DA3A1A;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: 2; /* 讓圓點蓋在線上 */
+  position: relative;
+}
+
 .object-fit-cover {
   object-fit: cover;
 }
@@ -121,6 +142,10 @@
   height: 128px;
 }
 
+.h-282 {
+  height: 282px;
+}
+
 .h-350 {
   height: 350px;
 }
@@ -135,6 +160,10 @@
 
 .w-120 {
   width: 120px;
+}
+
+.w-128 {
+  width: 128px;
 }
 
 .w-160 {

@@ -106,6 +106,8 @@ const reservationList = [
 const PetSitting = () => {
   const [selectedAnimal, setSelectedAnimal] = useState('貓')
   const [selectedCity, setSelectedCity] = useState('地區')
+  const [openAnimal, setOpenAnimal] = useState(false)
+  const [openCity, setOpenCity] = useState(false)
 
   const today = new Date()
   const [startDate, setStartDate] = useState(today)
@@ -127,45 +129,59 @@ const PetSitting = () => {
       </div>
       <div className="bg-yellow-20 mb-12">
         <div className="container-lg py-3 d-flex">
-          <div className="dropdown me-2">
+          <div className="dropdown position-relative me-2">
             <button
-              className="btn btn-white border dropdown-toggle text-gray-40 text-start"
               type="button"
-              data-bs-toggle="dropdown"
+              className="btn btn-white border dropdown-toggle text-gray-40 text-start"
+              onClick={() => setOpenAnimal(o => !o)}
             >
               {selectedAnimal}
             </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {animalList.map(dog => (
-                <li key={dog}>
-                  <button
-                    type="button"
-                    className="dropdown-item"
-                    onClick={() => setSelectedAnimal(dog)}
-                  >
-                    {dog}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {openAnimal && (
+              <ul className="dropdown-menu show">
+                {animalList.map(animal => (
+                  <li key={animal}>
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => {
+                        setSelectedAnimal(animal)
+                        setOpenAnimal(false)
+                      }}
+                    >
+                      {animal}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-          <div className="dropdown me-2">
-            <button className="btn btn-white border dropdown-toggle text-gray-40 w-160 text-start" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="dropdown position-relative me-2">
+            <button
+              type="button"
+              className="btn btn-white border dropdown-toggle text-gray-40 w-160 text-start"
+              onClick={() => setOpenCity(o => !o)}
+            >
               {selectedCity}
             </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {cityList.map(city => (
-                <li key={city}>
-                  <button
-                    type="button"
-                    className="dropdown-item"
-                    onClick={() => setSelectedCity(city)}
-                  >
-                    {city}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {openCity && (
+              <ul className="dropdown-menu show">
+                {cityList.map(city => (
+                  <li key={city}>
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => {
+                        setSelectedCity(city)
+                        setOpenCity(false)
+                      }}
+                    >
+                      {city}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="d-flex gap-2">
             {/* 起始日期 */}
@@ -182,7 +198,7 @@ const PetSitting = () => {
               highlightDates={[today]} // 高亮今天
               customInput={(
                 <button className="btn btn-white border dropdown-toggle w-160 text-start text-gray-40">
-                  {startDate ? `${startDate.getDate()}號` : '起始日期'}
+                  {startDate ? `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}` : '起始日期'}
                 </button>
               )}
             />
@@ -198,7 +214,7 @@ const PetSitting = () => {
               highlightDates={[today]}
               customInput={(
                 <button className="btn btn-white border dropdown-toggle w-160 text-start text-gray-40">
-                  {endDate ? `${endDate.getDate()}號` : '結束日期'}
+                  {endDate ? `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}` : '結束日期'}
                 </button>
               )}
             />
