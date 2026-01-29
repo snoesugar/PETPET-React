@@ -1,6 +1,23 @@
+import { Link } from 'react-router-dom'
+import { useAuth } from '../contents/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 
 const Login = () => {
+  const { login } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogin = () => {
+    // 模擬登入資料
+    const userData = {
+      name: 'Joanne',
+      email: 'cycample@gmail.com',
+      avatar: '/person-5.png',
+    }
+
+    login(userData)
+    navigate('/') // 登入成功跳首頁
+  }
   return (
     <>
       <Navbar />
@@ -46,7 +63,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="col-12 mb-2">
-                <button type="submit" className="btn btn-orange-20 py-2 w-32">登入</button>
+                <Link type="button" to="/user" className="btn btn-orange-20 py-2 w-32" onClick={handleLogin}>登入</Link>
               </div>
               <a href="#" className="text-orange-20 text-decoration-none">還沒註冊嗎？</a>
             </form>

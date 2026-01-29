@@ -1,5 +1,5 @@
 import { createHashRouter } from 'react-router-dom'
-import { Home, Layout, Login, PetSitting, Services } from '../pages/pages' // 分頁元件
+import { Home, Layout, Login, PetSitting, Services, User } from '../pages/pages' // 分頁元件
 
 const router = createHashRouter([
   {
@@ -23,6 +23,10 @@ const router = createHashRouter([
   {
     path: '/Login',
     element: <Login />,
+  },
+  {
+    path: '/user',
+    element: <User />,
   },
 ])
 
