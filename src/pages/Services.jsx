@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { Modal } from 'bootstrap'
 import DatePicker from 'react-datepicker'
+import { Link } from 'react-router-dom'
 
 // 預覽圖
 const images = [
@@ -100,7 +101,7 @@ const serviceList = [
     icon: 'directions_walk',
   },
 ]
-const animalNum = [1, 2, 3, 4, 5]
+const animalNum = [1, 2, 3, 4, 5, 6]
 const animalList = [
   '貓',
   '狗',
@@ -118,15 +119,201 @@ const Services = () => {
   const [openNum, setOpenNum] = useState(false)
   const [openAnimal, setOpenAnimal] = useState(false)
   const [openAge, setOpenAge] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [validated, setValidated] = useState(false)
+  // Step3：付款資料
+  const [cardErrors, setCardErrors] = useState({})
+  const [cardValidated, setCardValidated] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const serviceRef = useRef(null)
+  const serviceStep2Ref = useRef(null)
+  const serviceStep3Ref = useRef(null)
+  const serviceStep4Ref = useRef(null)
   const modalInstance = useRef(null)
+  const modalStep2Instance = useRef(null)
+  const modalStep3Instance = useRef(null)
+  const modalStep4Instance = useRef(null)
 
-  const serviceOpen = () => {
-    modalInstance.current.show()
+  // 填預約資料
+  const [formData, setFormData] = useState({
+    petName: '',
+    masterName: '',
+    email: '',
+    tel: '',
+  })
+  // 填信用卡資料
+  const [card, setCard] = useState({
+    account: '',
+    date: '',
+    password: '',
+  })
+  // 寵物表單驗證
+  const validate = () => {
+    const newErrors = {}
+
+    if (!formData.petName.trim()) {
+      newErrors.petName = '請輸入毛孩姓名'
+    }
+
+    if (!formData.masterName.trim()) {
+      newErrors.masterName = '請輸入飼主姓名'
+    }
+
+    if (!formData.email) {
+      newErrors.email = '請輸入 Email'
+    }
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email 格式不正確'
+    }
+
+    if (!formData.tel) {
+      newErrors.tel = '請輸入聯絡電話'
+    }
+    else if (!/^09\d{2}-?\d{3}-?\d{3}$/.test(formData.tel)) {
+      newErrors.tel = '電話格式不正確'
+    }
+
+    return newErrors
   }
+  // 信用卡表單驗證
+  const validateCard = (card) => {
+    const newErrors = {}
+
+    // 信用卡帳號驗證
+    if (!card.account.trim()) {
+      newErrors.account = '請輸入信用卡號'
+    }
+    else if (!/^\d{4}-?\d{4}-?\d{4}-?\d{4}$/.test(card.account)) {
+      newErrors.account = '信用卡號格式不正確'
+    }
+
+    // 有效日期驗證 MM/YY
+    if (!card.date.trim()) {
+      newErrors.date = '請輸入有效日期'
+    }
+    else if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(card.date)) {
+      newErrors.date = '有效日期格式不正確'
+    }
+    else {
+      // 過期檢查
+      const [month, year] = card.date.split('/').map(Number)
+      const currentDate = new Date()
+      const currentYear = currentDate.getFullYear() % 100 // 取後兩位
+      const currentMonth = currentDate.getMonth() + 1
+
+      if (year < currentYear || (year === currentYear && month < currentMonth)) {
+        newErrors.date = '信用卡已過期'
+      }
+    }
+
+    // 安全碼驗證
+    if (!card.password.trim()) {
+      newErrors.password = '請輸入安全碼'
+    }
+    else if (!/^\d{3,4}$/.test(card.password)) {
+      newErrors.password = '安全碼格式不正確'
+    }
+
+    return newErrors
+  }
+  // 輸入信用卡有效日期
+  const cardNum = (e) => {
+    // 移除非數字和已有斜線
+    let digits = e.target.value.replace(/\D/g, '')
+
+    // 只取前四位數
+    if (digits.length > 4) digits = digits.slice(0, 4)
+
+    // 根據長度加斜線
+    let formatted = digits
+    if (digits.length > 2) {
+      formatted = digits.substring(0, 2) + '/' + digits.substring(2)
+    }
+
+    setCard({ ...card, date: formatted })
+  }
+  // 取得預約資料input
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+  // 取得信用卡資料input
+  const handleCardChange = (e) => {
+    const { name, value } = e.target
+    setCard(prev => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+  // 第一個 Modal到第二個 Modal
+  const handleStep2Next = () => {
+    const validationErrors = validate(formData)
+    setErrors(validationErrors)
+    setValidated(true)
+
+    if (Object.keys(validationErrors).length === 0) {
+      // 驗證通過 → 切到下一個 Modal
+      modalStep2Instance.current.hide()
+      modalStep3Instance.current.show()
+      resetValidation()
+    }
+  }
+  // 第二個 Modal到第三個 Modal
+  const handleStep3Next = () => {
+    const validationErrors = validateCard(card)
+    setCardErrors(validationErrors)
+    setCardValidated(true)
+
+    if (Object.keys(validationErrors).length === 0) {
+      // 驗證通過 → 切到下一個 Modal
+      modalStep3Instance.current.hide()
+      modalStep4Instance.current.show()
+      resetValidation()
+    }
+  }
+  // 關掉 Modal
+  const closeModal = () => {
+    setShowModal(false)
+    resetValidation()
+  }
+  // 清空驗證錯誤
+  const resetValidation = () => {
+    setErrors({})
+    setValidated(false)
+    setCardErrors({})
+    setCardValidated(false)
+  }
+
+  // 計算預約多少晚
+  const calcNights = (start, end) => {
+    if (!start || !end) return 0
+
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+
+    // 時間歸零，避免跨日誤差
+    startDate.setHours(0, 0, 0, 0)
+    endDate.setHours(0, 0, 0, 0)
+
+    const diffTime = endDate - startDate
+    const diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+    return diffDays > 0 ? diffDays : 0
+  }
+
+  const nights = useMemo(() => {
+    return calcNights(startDate, endDate)
+  }, [startDate, endDate])
+
   useEffect(() => {
     modalInstance.current = new Modal(serviceRef.current)
+    modalStep2Instance.current = new Modal(serviceStep2Ref.current)
+    modalStep3Instance.current = new Modal(serviceStep3Ref.current)
+    modalStep4Instance.current = new Modal(serviceStep4Ref.current)
   }, [])
 
   return (
@@ -175,7 +362,7 @@ const Services = () => {
                   <button type="button" className="fs-7 bg-white text-orange-20 border-1 border-orange-20 py-2 w-100 rounded-1">聯繫</button>
                 </div>
                 <div className="col-7">
-                  <button type="button" className="fs-7 bg-orange-20 text-white border-1 border-orange-20 py-2 w-100 rounded-1" onClick={serviceOpen}>立刻預約</button>
+                  <button type="button" className="fs-7 bg-orange-20 text-white border-1 border-orange-20 py-2 w-100 rounded-1" onClick={() => modalInstance.current.show()}>立刻預約</button>
                 </div>
               </div>
             </div>
@@ -304,8 +491,8 @@ const Services = () => {
           </main>
         </div>
       </div>
-      {/* // 預約Modal */}
-      <div className="modal fade" tabIndex="-1" ref={serviceRef}>
+      {/* 預約項目 Modal */}
+      <div className={`modal fade ${showModal ? 'show d-block' : ''}`} tabIndex="-1" ref={serviceRef}>
         <div className="modal-dialog modal-xl">
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
@@ -377,7 +564,11 @@ const Services = () => {
                           </button>
                         )}
                       />
-                      <span>共 1 晚</span>
+                      <span>
+                        共
+                        {nights}
+                        晚
+                      </span>
                     </div>
                     <div className="d-flex mb-10">
                       <div className="me-6">
@@ -477,7 +668,6 @@ const Services = () => {
                     </div>
                   </div>
                   <div className="row text-center position-relative mb-6">
-                    {/* 步驟條背景線 */}
                     <div className="step-line position-absolute w-100"></div>
 
                     <div className="col-4 d-flex flex-column align-items-center position-relative">
@@ -523,10 +713,320 @@ const Services = () => {
                   <button
                     className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
                     type="button"
+                    onClick={() => {
+                      modalInstance.current.hide() // 關閉第一個 Modal
+                      modalStep2Instance.current.show() // 打開第二個 Modal
+                    }}
                   >
                     下一步
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 預約資料 Modal */}
+      <div className="modal fade" tabIndex="-1" ref={serviceStep2Ref} onClick={closeModal}>
+        <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
+          <div className="modal-content">
+            <div className="modal-body px-7 pt-10 pb-9">
+              <div className="row">
+                {/* 左邊欄位 */}
+                <div className="col-7">
+                  <h5 className="text-primary fw-bold mb-7">預約資料</h5>
+                  <div className="mb-6">
+                    <form className="row" noValidate>
+                      {/* 毛孩姓名 */}
+                      <div className="col-12">
+                        <label htmlFor="petName" className="form-label mb-1">毛孩姓名</label>
+                        <input
+                          type="text"
+                          id="petName"
+                          name="petName"
+                          className={`form-control w-66 ${
+                            validated && (errors.petName ? 'is-invalid' : 'is-valid')
+                          }`}
+                          placeholder="請輸入毛孩姓名"
+                          value={formData.petName}
+                          onChange={handleChange}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: errors.petName ? 'visible' : 'hidden' }}>
+                          {errors.petName || 'placeholder'}
+                        </div>
+                      </div>
+                      {/* 飼主姓名 */}
+                      <div className="col-12">
+                        <label htmlFor="masterName" className="form-label mb-1">飼主姓名</label>
+                        <input
+                          type="text"
+                          id="masterName"
+                          name="masterName"
+                          className={`form-control w-66 ${
+                            validated && (errors.masterName ? 'is-invalid' : 'is-valid')
+                          }`}
+                          placeholder="請輸入飼主姓名"
+                          value={formData.masterName}
+                          onChange={handleChange}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: errors.masterName ? 'visible' : 'hidden' }}>
+                          {errors.masterName || 'placeholder'}
+                        </div>
+                      </div>
+                      {/* Email */}
+                      <div className="col-12">
+                        <label htmlFor="email" className="form-label mb-1">Email</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          className={`form-control w-66 ${
+                            validated && (errors.email ? 'is-invalid' : 'is-valid')
+                          }`}
+                          placeholder="example@gmail.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: errors.email ? 'visible' : 'hidden' }}>
+                          {errors.email || 'placeholder'}
+                        </div>
+                      </div>
+                      {/* 電話 */}
+                      <div className="col-12">
+                        <label htmlFor="tel" className="form-label mb-1">聯絡電話</label>
+                        <input
+                          type="tel"
+                          id="tel"
+                          name="tel"
+                          className={`form-control w-66 ${
+                            validated && (errors.tel ? 'is-invalid' : 'is-valid')
+                          }`}
+                          placeholder="0912-345-678"
+                          value={formData.tel}
+                          onChange={handleChange}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: errors.tel ? 'visible' : 'hidden' }}>
+                          {errors.tel || 'placeholder'}
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="row text-center position-relative mb-6">
+                    <div className="step-line position-absolute w-100"></div>
+
+                    <div className="col-4 d-flex flex-column align-items-center position-relative">
+                      <span className="step-dot"></span>
+                      <span className="mt-1">預約項目</span>
+                    </div>
+                    <div className="col-4 d-flex flex-column align-items-center position-relative">
+                      <span className="step-dot"></span>
+                      <span className="fw-bold mt-1">預約資料</span>
+                    </div>
+                    <div className="col-4 d-flex flex-column align-items-center position-relative">
+                      <span className="step-dot"></span>
+                      <span className="mt-1">付款資訊</span>
+                    </div>
+                  </div>
+                </div>
+                {/* 右邊欄位 */}
+                <div className="col-5 d-flex flex-column h-100">
+                  <img
+                    src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
+                    className="h-282 w-100 rounded-1 object-fit-cover mb-2"
+                    alt="homestay-3"
+                  />
+                  <div className="d-flex mb-2">
+                    <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
+                    <div className="stars d-flex align-items-center">
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                    </div>
+                  </div>
+                  <div className="d-flex mb-6">
+                    <div className="me-3">
+                      <span className="material-icons text-orange-20">room</span>
+                    </div>
+                    <p className="fw-medium text-primary mb-0">
+                      高雄市苓雅區、新興區、前鎮區
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn text-orange-10 p-0 mb-4"
+                    onClick={() => {
+                      modalStep2Instance.current.hide() // 關閉第二個 Modal
+                      modalInstance.current.show() // 打開第一個 Modal
+                      resetValidation()
+                    }}
+                  >
+                    返回
+                  </button>
+                  {/* 撐到最底 */}
+                  <button
+                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
+                    type="button"
+                    onClick={handleStep2Next}
+                  >
+                    下一步
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 付款資訊 Modal */}
+      <div className="modal fade" tabIndex="-1" ref={serviceStep3Ref} onClick={closeModal}>
+        <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
+          <div className="modal-content">
+            <div className="modal-body px-7 pt-10 pb-9">
+              <div className="row">
+                {/* 左邊欄位 */}
+                <div className="col-7">
+                  <h5 className="text-primary fw-bold mb-7">付款資訊</h5>
+                  <div className="mb-6">
+                    <form className="row" noValidate>
+                      {/* 信用卡帳號 */}
+                      <div className="col-12">
+                        <label htmlFor="account" className="form-label mb-1">信用卡帳號</label>
+                        <input
+                          type="text"
+                          id="account"
+                          name="account"
+                          className={`form-control w-66 ${cardValidated && (cardErrors.account ? 'is-invalid' : 'is-valid')}`}
+                          placeholder="Xxxx-xxxx-xxxx-xxxx"
+                          value={card.account}
+                          onChange={handleCardChange}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: cardErrors.account ? 'visible' : 'hidden' }}>
+                          {cardErrors.account || 'placeholder'}
+                        </div>
+                      </div>
+                      {/* 有效日期 */}
+                      <div className="col-12">
+                        <label htmlFor="date" className="form-label mb-1">有效日期</label>
+                        <input
+                          type="text"
+                          id="date"
+                          name="date"
+                          className={`form-control w-66 ${cardValidated && (cardErrors.date ? 'is-invalid' : 'is-valid')}`}
+                          placeholder="MM/YY"
+                          maxLength={5} // 限制長度為 5
+                          value={card.date}
+                          onChange={cardNum}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: cardErrors.date ? 'visible' : 'hidden' }}>
+                          {cardErrors.date || '請輸入有效日期 (MM/YY)'}
+                        </div>
+                      </div>
+                      {/* 安全碼 */}
+                      <div className="col-12 mb-10 pb-6">
+                        <label htmlFor="email" className="form-label mb-1">安全碼</label>
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          maxLength={3}
+                          className={`form-control w-66 ${cardValidated && (cardErrors.password ? 'is-invalid' : 'is-valid')}`}
+                          placeholder="***"
+                          value={card.password}
+                          onChange={handleCardChange}
+                        />
+                        <div className="invalid-feedback mt-0 d-block" style={{ visibility: cardErrors.password ? 'visible' : 'hidden' }}>
+                          {cardErrors.password || 'placeholder'}
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="row text-center position-relative mb-6">
+                    <div className="step-line position-absolute w-100"></div>
+
+                    <div className="col-4 d-flex flex-column align-items-center position-relative">
+                      <span className="step-dot"></span>
+                      <span className="mt-1">預約項目</span>
+                    </div>
+                    <div className="col-4 d-flex flex-column align-items-center position-relative">
+                      <span className="step-dot"></span>
+                      <span className="mt-1">預約資料</span>
+                    </div>
+                    <div className="col-4 d-flex flex-column align-items-center position-relative">
+                      <span className="step-dot"></span>
+                      <span className="fw-bold mt-1">付款資訊</span>
+                    </div>
+                  </div>
+                </div>
+                {/* 右邊欄位 */}
+                <div className="col-5 d-flex flex-column h-100">
+                  <img
+                    src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
+                    className="h-282 w-100 rounded-1 object-fit-cover mb-2"
+                    alt="homestay-3"
+                  />
+                  <div className="d-flex mb-2">
+                    <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
+                    <div className="stars d-flex align-items-center">
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                      <span className="star-big"></span>
+                    </div>
+                  </div>
+                  <div className="d-flex mb-6">
+                    <div className="me-3">
+                      <span className="material-icons text-orange-20">room</span>
+                    </div>
+                    <p className="fw-medium text-primary mb-0">
+                      高雄市苓雅區、新興區、前鎮區
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn text-orange-10 p-0 mb-4"
+                    onClick={() => {
+                      modalStep3Instance.current.hide()
+                      modalStep2Instance.current.show()
+                    }}
+                  >
+                    返回
+                  </button>
+                  <button
+                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
+                    type="button"
+                    onClick={handleStep3Next}
+                  >
+                    下一步
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 預約成功! Modal */}
+      <div className="modal fade" tabIndex="-1" ref={serviceStep4Ref}>
+        <div className="modal-dialog modal-xl">
+          <div className="modal-content">
+            <div className="modal-body px-7 py-14">
+              <div className="row text-center my-9">
+                <span class="material-symbols-outlined display-1 text-yellow-20">
+                  pets
+                </span>
+                <h5 className="text-primary fs-6 fw-bold mb-3">預約成功!</h5>
+                <p className="text-primary mb-8">您可以在會員頁找到您的預約資料並修改或取消預約。</p>
+                <Link
+                  to="/"
+                  type="button"
+                  className="btn btn-orange-10 w-48 mx-auto py-2 rounded-1"
+                  onClick={() => {
+                    modalStep4Instance.current.hide() // 隱藏 Modal 及 backdrop
+                  }}
+                >
+                  前往會員頁
+                </Link>
               </div>
             </div>
           </div>
