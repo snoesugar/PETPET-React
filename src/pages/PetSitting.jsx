@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ServiceCard } from '../components/Components'
@@ -113,6 +113,25 @@ const PetSitting = () => {
   const [startDate, setStartDate] = useState(today)
   const [endDate, setEndDate] = useState(today)
 
+  const animalRef = useRef(null)
+  const cityRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (animalRef.current && !animalRef.current.contains(e.target)) {
+        setOpenAnimal(false)
+      }
+      if (cityRef.current && !cityRef.current.contains(e.target)) {
+        setOpenCity(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   return (
     <>
       {/* 寵物寄宿 */}
@@ -129,7 +148,7 @@ const PetSitting = () => {
       </div>
       <div className="bg-yellow-20 mb-12">
         <div className="container-lg py-3 d-flex">
-          <div className="dropdown position-relative me-2">
+          <div className="dropdown position-relative me-2" ref={animalRef}>
             <button
               type="button"
               className="btn btn-white border dropdown-toggle text-gray-40 text-start"
@@ -156,7 +175,7 @@ const PetSitting = () => {
               </ul>
             )}
           </div>
-          <div className="dropdown position-relative me-2">
+          <div className="dropdown position-relative me-2" ref={cityRef}>
             <button
               type="button"
               className="btn btn-white border dropdown-toggle text-gray-40 w-160 text-start"

@@ -1,10 +1,24 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../contents/AuthContext'
 
 const Navbar = () => {
   const [openUser, setOpenUser] = useState(false)
   const { isAuth, user, logout } = useAuth()
+  const userRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (userRef.current && !userRef.current.contains(e.target)) {
+        setOpenUser(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
   return (
     <div className="sticky-top bg-white">
       <div className="container-lg">
@@ -50,7 +64,7 @@ const Navbar = () => {
                     </li>
                   )
                   : (
-                    <li className="nav-item dropdown">
+                    <li className="nav-item dropdown" ref={userRef}>
                       <button
                         className="btn nav-link d-flex text-primary"
                         type="button"

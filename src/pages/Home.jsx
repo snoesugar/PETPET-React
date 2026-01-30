@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ServiceCard } from '../components/Components'
 import { Link } from 'react-router-dom'
 
@@ -98,6 +98,28 @@ const Home = () => {
   const [openDog, setOpenDog] = useState(false)
   const [openService, setOpenService] = useState(false)
   const [openCity, setOpenCity] = useState(false)
+  const dogRef = useRef(null)
+  const serviceRef = useRef(null)
+  const cityRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dogRef.current && !dogRef.current.contains(e.target)) {
+        setOpenDog(false)
+      }
+      if (serviceRef.current && !serviceRef.current.contains(e.target)) {
+        setOpenService(false)
+      }
+      if (cityRef.current && !cityRef.current.contains(e.target)) {
+        setOpenCity(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <>
@@ -114,7 +136,7 @@ const Home = () => {
                 <p className="fs-6 fw-bold">當您的毛孩有需要時，幫您找到最合適的服務者！</p>
               </div>
               <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                <div className="dropdown position-relative">
+                <div className="dropdown position-relative" ref={dogRef}>
                   <button
                     type="button"
                     className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
@@ -141,7 +163,7 @@ const Home = () => {
                     </ul>
                   )}
                 </div>
-                <div className="dropdown position-relative">
+                <div className="dropdown position-relative" ref={serviceRef}>
                   <button
                     type="button"
                     className="btn btn-white border border-end-0 rounded-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
@@ -168,7 +190,7 @@ const Home = () => {
                     </ul>
                   )}
                 </div>
-                <div className="dropdown position-relative">
+                <div className="dropdown position-relative" ref={cityRef}>
                   <button
                     type="button"
                     className="btn btn-white border border-end-0 rounded-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
