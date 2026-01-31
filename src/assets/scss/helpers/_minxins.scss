@@ -1,0 +1,57 @@
+@include media-breakpoint-down(md) { 
+  /*home*/
+
+  /*margin padding*/
+  .mb-md-5 {
+    margin-bottom: 20px;
+  }
+  
+  /*長寬*/
+  .w-50.w-md-80 {
+    width: 80% !important;
+  }
+  .w-md-150 {
+    width: 150px;
+  }
+  .w-md-210 {
+    width: 210px;
+  }
+
+  .w-md-390 {
+    width: 390px !important;
+  }
+
+  .w-100.w-md-60 {
+    width: 60% !important;
+  }
+
+  .w-100.h-md-150 {
+    height: 150px !important;
+  }
+
+  /*文字*/
+  .fs-md-4 {
+    font-size: 32px;
+  }
+  .fs-6.fs-md-7 {
+    font-size: 20px !important;
+  }
+}
+
+@include media-breakpoint-up(md) { 
+  /*home*/
+  .border.border-md-end-0 {
+    border-right: 0px !important;
+  }
+  .rounded-md-0 {
+    border-radius: 0px !important;
+  }
+  .rounded-md-end-0 {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+  .rounded-md-start-0 {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  }
+}

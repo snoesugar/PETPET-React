@@ -126,20 +126,20 @@ const Home = () => {
       {/* 首頁 */}
       <div className="container-xl mb-12">
         <div className="row">
-          <div className="col-5">
-            <img className="img-fluid" src={`${import.meta.env.BASE_URL}index-1.png`} alt="index-1" />
+          <div className="col-md-5 text-center">
+            <img className="img-fluid w-md-210 my-md-0 mt-8 mb-6" src={`${import.meta.env.BASE_URL}index-1.png`} alt="index-1" />
           </div>
-          <div className="col-7 d-flex flex-column">
+          <div className="col-md-7 d-flex flex-column text-center">
             <div className="flex-grow-1 d-flex flex-column justify-content-center">
-              <div className="text-primary">
-                <h2 className="mb-4 fw-bold">寵物服務，盡在 PETPET</h2>
-                <p className="fs-6 fw-bold">當您的毛孩有需要時，幫您找到最合適的服務者！</p>
+              <div className="text-md-start text-center text-primary">
+                <h2 className="fs-md-4 fw-bold mb-md-4 mb-2">寵物服務，盡在 PETPET</h2>
+                <p className="fs-6 fs-md-7 fw-bold mb-md-9 mb-5">當您的毛孩有需要時，幫您找到最合適的服務者！</p>
               </div>
-              <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                <div className="dropdown position-relative" ref={dogRef}>
+              <div className="d-flex flex-column flex-md-row">
+                <div className="dropdown position-relative flex-md-fill" ref={dogRef}>
                   <button
                     type="button"
-                    className="btn btn-white border border-end-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    className="btn btn-white border border-md-end-0 dropdown-toggle fs-7 text-gray-40 w-100 w-md-60 text-start rounded-md-end-0 mb-3"
                     onClick={() => setOpenDog(o => !o)}
                   >
                     {selectedDog}
@@ -163,10 +163,10 @@ const Home = () => {
                     </ul>
                   )}
                 </div>
-                <div className="dropdown position-relative" ref={serviceRef}>
+                <div className="dropdown position-relative flex-md-fill" ref={serviceRef}>
                   <button
                     type="button"
-                    className="btn btn-white border border-end-0 rounded-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    className="btn btn-white border border-md-end-0 dropdown-toggle fs-7 text-gray-40 w-100 w-md-60  text-start rounded-md-0 mb-4"
                     onClick={() => setOpenService(o => !o)}
                   >
                     {selectedService}
@@ -190,10 +190,10 @@ const Home = () => {
                     </ul>
                   )}
                 </div>
-                <div className="dropdown position-relative" ref={cityRef}>
+                <div className="dropdown position-relative flex-md-fill" ref={cityRef}>
                   <button
                     type="button"
-                    className="btn btn-white border border-end-0 rounded-0 dropdown-toggle fs-7 text-gray-40 w-210 text-start rounded-end-0"
+                    className="btn btn-white border border-md-end-0 dropdown-toggle fs-7 text-gray-40 w-100 w-md-60  text-start rounded-md-0 mb-3"
                     onClick={() => setOpenCity(o => !o)}
                   >
                     {selectedCity}
@@ -217,10 +217,12 @@ const Home = () => {
                     </ul>
                   )}
                 </div>
-                <button type="button" className="btn btn-orange-20 btn-fit fs-7 px-6">搜尋</button>
+                <div className="text-center mb-12">
+                  <button type="button" className="btn btn-orange-20 btn-fit fs-7 px-6 w-100 w-md-60 rounded-md-start-0 mb-4">搜尋</button>
+                </div>
               </div>
             </div>
-            <div className="text-end pe-13">
+            <div className="text-end">
               <button type="button" className="btn btn-orange-20 btn-fit rounded-circle p-2">
                 <span className="material-symbols-outlined">arrow_drop_down</span>
               </button>
@@ -229,7 +231,7 @@ const Home = () => {
         </div>
       </div>
       {/* 本月熱門保姆 */}
-      <div className="container-lg mb-12">
+      <div className="container-lg mb-md-12 mb-10">
         <h3 className="fw-bold text-primary mb-1">本月熱門保姆</h3>
         <p className="fs-7 text-primary mb-3">即時瞭解您的需求，安排最適合毛孩的寵物保姆！</p>
         <div className="row">
@@ -248,7 +250,7 @@ const Home = () => {
         </div>
       </div>
       {/* 線上預約 */}
-      <div className="container-lg mb-12">
+      <div className="container-lg mb-md-12 mb-10">
         <h3 className="fw-bold text-primary mb-1">線上預約</h3>
         <p className="fs-7 text-primary mb-3">即時瞭解您的需求，安排最適合毛孩的寵物保姆！</p>
         <div className="d-flex gap-1 h-350">
@@ -307,10 +309,10 @@ const Home = () => {
         </div>
       </div>
       {/* PETPET目前已有 */}
-      <div className="mb-12 index-back-img py-12">
+      <div className=" index-back-img mb-md-12 mb-10 py-12">
         <div className="container-lg text-white">
           <h2 className="fw-bold mb-13">PETPET目前已有</h2>
-          <div className="row">
+          <div className="row ps-3">
             <div className="col-3 border-start pb-12">
               <p className="fs-1 fw-bold mb-0">5278</p>
               <p className="fs-7 fw-medium">人使用 PETPET</p>
@@ -327,7 +329,7 @@ const Home = () => {
         </div>
       </div>
       {/* 預約流程 */}
-      <div className="container-lg mb-12">
+      <div className="container-lg mb-md-12 mb-10">
         <h3 className="fw-bold text-primary mb-1">預約流程</h3>
         <p className="fs-7 text-primary mb-5">輕鬆三步驟，立即獲取最佳服務！</p>
         <div className="row">

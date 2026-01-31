@@ -22,8 +22,6 @@
 
 .btn-fit {
   display: inline-flex;
-  width: fit-content;
-  max-width: fit-content;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -128,6 +126,21 @@
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+.img-square {
+  aspect-ratio: 1 / 1;
+}
+
+.thumb-square {
+  aspect-ratio: 1 / 1;
+  width: 96px;      // 桌機尺寸
+}
+
+@include media-breakpoint-down(md) {
+  .thumb-square {
+    width: 64px;    // 手機自適應
+  }
 }
 
 .h-96 {

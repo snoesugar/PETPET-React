@@ -137,16 +137,16 @@ const PetSitting = () => {
       {/* 寵物寄宿 */}
       <div className="container-lg my-10">
         <div className="row">
-          <div className="col-4 my-auto">
-            <h2 className="mb-4 text-primary">寵物寄宿</h2>
+          <div className="col-md-4 col-5 my-auto">
+            <h2 className="text-primary mb-md-4 mb-2">寵物寄宿</h2>
             <p className="fs-6 fw-bold text-primary">給您的毛孩最舒適的環境</p>
           </div>
-          <div className="col-8">
-            <img src={`${import.meta.env.BASE_URL}homestay-1.png`} alt="homestay-1" />
+          <div className="col-md-8 col-7">
+            <img src={`${import.meta.env.BASE_URL}homestay-1.png`} alt="homestay-1" className="img-fluid" />
           </div>
         </div>
       </div>
-      <div className="bg-yellow-20 mb-12">
+      <div className="bg-yellow-20 mb-md-12 mb-10">
         <div className="container-lg py-3 d-flex">
           <div className="dropdown position-relative me-2" ref={animalRef}>
             <button
@@ -241,7 +241,7 @@ const PetSitting = () => {
         </div>
       </div>
       {/* 本月熱門住宿 */}
-      <div className="container-lg mb-12">
+      <div className="container-lg mb-md-12 mb-10">
         <h3 className="fw-bold text-primary mb-3">本月熱門寄宿</h3>
         <div className="row">
           {babysitters.map(sitter => (
@@ -264,8 +264,8 @@ const PetSitting = () => {
           {
             reservationList.map((item) => {
               return (
-                <div className="col-3" key={item.title}>
-                  <div className="card shadow">
+                <div className="col-md-3 col-4" key={item.title}>
+                  <div className="card shadow h-100">
                     <img src={item.gImage} className="card-img-top h-128 object-fit-cover" alt={item.title} />
                     <div className="card-body bg-gray-0 pt-2 pb-8">
                       <h5 className="fs-9 text-primary">{item.title}</h5>
@@ -290,7 +290,7 @@ const PetSitting = () => {
         </div>
         {/* 分頁 */}
         <nav aria-label="Page navigation example">
-          <ul className="pagination mb-11">
+          <ul className="pagination mb-md-11 mb-10">
             <li className="page-item ms-auto">
               <a className="page-link py-2 px-4" href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>

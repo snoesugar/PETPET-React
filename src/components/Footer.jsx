@@ -9,13 +9,13 @@ const Footer = () => {
           <h2 className="mb-2">有任何我們能幫助您的嗎？</h2>
           <p className="fs-7 fw-medium mb-0">輸入電子信箱</p>
           <p className="fs-7 fw-medium mb-4">將有專業人員在線幫您解決所有問題</p>
-          <div className="input-group w-50">
+          <div className="input-group w-md-80 w-50">
             <input type="text" className="form-control" placeholder="example@gmail.com" aria-label="example@gmail.com" aria-describedby="button-email" />
             <button className="btn btn-orange-20 py-3 px-10" type="button" id="button-email">送出</button>
           </div>
         </div>
       </div>
-      <div className="bg-white py-11 position-relative"></div>
+      <div className="bg-white py-md-11 py-8 position-relative"></div>
       {/* footer */}
       <div className="container-lg mb-6 bg-white position-relative">
         <div className="row">
@@ -40,7 +40,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-13">
           <div className="col-3">
             <ul className="list-unstyled">
               <li className="mb-6">
