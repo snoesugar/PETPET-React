@@ -892,10 +892,57 @@ const Services = () => {
         <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
-              <div className="row">
+              <div className="row flex-row-reverse">
+                <h5 className="d-md-none text-primary fw-bold mb-6">預約資料</h5>
+                {/* 右邊欄位 */}
+                <div className="col-md-5 d-flex flex-md-column flex-row h-100 mb-md-0 mb-5">
+                  <img
+                    src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
+                    className="img-square h-md-150 w-md-150 rounded-1 object-fit-cover mb-md-2 mb-0"
+                    alt="homestay-3"
+                  />
+                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-6">
+                    <div className="d-flex mb-2">
+                      <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
+                      <div className="stars d-flex align-items-center">
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                      </div>
+                    </div>
+                    <div className="d-flex mb-md-11 mb-0">
+                      <div className="me-3">
+                        <span className="material-icons text-orange-20">room</span>
+                      </div>
+                      <p className="fw-medium text-primary mb-0">
+                        高雄市苓雅區、新興區、前鎮區
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn text-orange-10 p-0 mb-4 d-md-block d-none"
+                    onClick={() => {
+                      modalStep2Instance.current.hide() // 關閉第二個 Modal
+                      modalInstance.current.show() // 打開第一個 Modal
+                      resetValidation()
+                    }}
+                  >
+                    返回
+                  </button>
+                  <button
+                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto d-md-block d-none"
+                    type="button"
+                    onClick={handleStep2Next}
+                  >
+                    下一步
+                  </button>
+                </div>
                 {/* 左邊欄位 */}
-                <div className="col-7">
-                  <h5 className="text-primary fw-bold mb-7">預約資料</h5>
+                <div className="col-md-7">
+                  <h5 className="d-md-block d-none text-primary fw-bold mb-7">預約資料</h5>
                   <div className="mb-6">
                     <form className="row" noValidate>
                       {/* 毛孩姓名 */}
@@ -974,7 +1021,6 @@ const Services = () => {
                   </div>
                   <div className="row text-center position-relative mb-6">
                     <div className="step-line position-absolute w-100"></div>
-
                     <div className="col-4 d-flex flex-column align-items-center position-relative">
                       <span className="step-dot"></span>
                       <span className="mt-1">預約項目</span>
@@ -988,51 +1034,26 @@ const Services = () => {
                       <span className="mt-1">付款資訊</span>
                     </div>
                   </div>
-                </div>
-                {/* 右邊欄位 */}
-                <div className="col-5 d-flex flex-column h-100">
-                  <img
-                    src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
-                    className="h-282 w-100 rounded-1 object-fit-cover mb-2"
-                    alt="homestay-3"
-                  />
-                  <div className="d-flex mb-2">
-                    <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
-                    <div className="stars d-flex align-items-center">
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                    </div>
+                  <div className="text-end">
+                    <button
+                      type="button"
+                      className="btn text-orange-10 p-0 mb-md-4 mb-0 me-6 d-md-none"
+                      onClick={() => {
+                        modalStep2Instance.current.hide() // 關閉第二個 Modal
+                        modalInstance.current.show() // 打開第一個 Modal
+                        resetValidation()
+                      }}
+                    >
+                      返回
+                    </button>
+                    <button
+                      className="btn btn-orange-10 w-50 rounded-1 py-2 d-md-none"
+                      type="button"
+                      onClick={handleStep2Next}
+                    >
+                      下一步
+                    </button>
                   </div>
-                  <div className="d-flex mb-6">
-                    <div className="me-3">
-                      <span className="material-icons text-orange-20">room</span>
-                    </div>
-                    <p className="fw-medium text-primary mb-0">
-                      高雄市苓雅區、新興區、前鎮區
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    className="btn text-orange-10 p-0 mb-4"
-                    onClick={() => {
-                      modalStep2Instance.current.hide() // 關閉第二個 Modal
-                      modalInstance.current.show() // 打開第一個 Modal
-                      resetValidation()
-                    }}
-                  >
-                    返回
-                  </button>
-                  {/* 撐到最底 */}
-                  <button
-                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
-                    type="button"
-                    onClick={handleStep2Next}
-                  >
-                    下一步
-                  </button>
                 </div>
               </div>
             </div>
@@ -1044,12 +1065,58 @@ const Services = () => {
         <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
-              <div className="row">
+              <h5 className="d-md-none text-primary fw-bold mb-6">付款資訊</h5>
+              <div className="row flex-row-reverse">
+                {/* 右邊欄位 */}
+                <div className="col-md-5 d-md-flex d-none flex-md-column flex-row h-100 mb-md-0 mb-5">
+                  <img
+                    src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
+                    className="img-square h-md-150 w-md-150 rounded-1 object-fit-cover mb-md-2 mb-0"
+                    alt="homestay-3"
+                  />
+                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-6">
+                    <div className="d-flex mb-2">
+                      <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
+                      <div className="stars d-flex align-items-center">
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                        <span className="star-big"></span>
+                      </div>
+                    </div>
+                    <div className="d-flex mb-md-11 mb-0">
+                      <div className="me-3">
+                        <span className="material-icons text-orange-20">room</span>
+                      </div>
+                      <p className="fw-medium text-primary mb-0">
+                        高雄市苓雅區、新興區、前鎮區
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn text-orange-10 p-0 mb-4 d-md-block d-none"
+                    onClick={() => {
+                      modalStep3Instance.current.hide()
+                      modalStep2Instance.current.show()
+                    }}
+                  >
+                    返回
+                  </button>
+                  <button
+                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto d-md-block d-none"
+                    type="button"
+                    onClick={handleStep3Next}
+                  >
+                    下一步
+                  </button>
+                </div>
                 {/* 左邊欄位 */}
-                <div className="col-7">
-                  <h5 className="text-primary fw-bold mb-7">付款資訊</h5>
+                <div className="col-md-7">
+                  <h5 className="d-md-block d-none text-primary fw-bold mb-7">付款資訊</h5>
                   <div className="mb-6">
-                    <form className="row" noValidate>
+                    <form className="row mb-md-0 pb-md-0 pb-11 mb-14">
                       {/* 信用卡帳號 */}
                       <div className="col-12">
                         <label htmlFor="account" className="form-label mb-1">信用卡帳號</label>
@@ -1118,49 +1185,25 @@ const Services = () => {
                       <span className="fw-bold mt-1">付款資訊</span>
                     </div>
                   </div>
-                </div>
-                {/* 右邊欄位 */}
-                <div className="col-5 d-flex flex-column h-100">
-                  <img
-                    src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
-                    className="h-282 w-100 rounded-1 object-fit-cover mb-2"
-                    alt="homestay-3"
-                  />
-                  <div className="d-flex mb-2">
-                    <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
-                    <div className="stars d-flex align-items-center">
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                      <span className="star-big"></span>
-                    </div>
+                  <div className="text-end">
+                    <button
+                      type="button"
+                      className="btn text-orange-10 p-0 mb-md-4 mb-0 me-6 d-md-none"
+                      onClick={() => {
+                        modalStep3Instance.current.hide()
+                        modalStep2Instance.current.show()
+                      }}
+                    >
+                      返回
+                    </button>
+                    <button
+                      className="btn btn-orange-10 w-50 rounded-1 py-2 d-md-none"
+                      type="button"
+                      onClick={handleStep3Next}
+                    >
+                      下一步
+                    </button>
                   </div>
-                  <div className="d-flex mb-6">
-                    <div className="me-3">
-                      <span className="material-icons text-orange-20">room</span>
-                    </div>
-                    <p className="fw-medium text-primary mb-0">
-                      高雄市苓雅區、新興區、前鎮區
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    className="btn text-orange-10 p-0 mb-4"
-                    onClick={() => {
-                      modalStep3Instance.current.hide()
-                      modalStep2Instance.current.show()
-                    }}
-                  >
-                    返回
-                  </button>
-                  <button
-                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
-                    type="button"
-                    onClick={handleStep3Next}
-                  >
-                    下一步
-                  </button>
                 </div>
               </div>
             </div>
@@ -1171,7 +1214,7 @@ const Services = () => {
       <div className="modal fade" tabIndex="-1" ref={serviceStep4Ref}>
         <div className="modal-dialog modal-xl">
           <div className="modal-content">
-            <div className="modal-body px-7 py-14">
+            <div className="modal-body px-7 py-14 my-md-10 my-14">
               <div className="row text-center my-9">
                 <span class="material-symbols-outlined display-1 text-yellow-20">
                   pets
