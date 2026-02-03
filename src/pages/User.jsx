@@ -20,7 +20,7 @@ const User = () => {
             <table class="table table-borderless">
               <tbody>
                 <tr>
-                  <td className="w-16">電子信箱</td>
+                  <td className="w-md-16 w-25">電子信箱</td>
                   <td class="text-primary">cycample@gmail.com</td>
                 </tr>
                 <tr>
@@ -40,10 +40,10 @@ const User = () => {
           </div>
           <div className="col-6">
             <div className="d-flex flex-column justify-content-center h-100">
-              <p class="text-primary fs-4 fw-bold mb-0">Hi, Joanne</p>
-              <p class="text-primary fs-4 fw-bold mb-0">喜歡我們提供的服務嗎？</p>
-              <p class="text-primary fs-4 fw-bold mb-7">現在你也可以成為寵物保姆囉！</p>
-              <button type="button" class="btn btn-orange-20 py-2 w-50">成為寵物保姆</button>
+              <p class="text-primary fs-md-4 fs-6 fw-bold mb-0">Hi, Joanne</p>
+              <p class="text-primary fs-md-4 fs-6 fw-bold mb-0">喜歡我們提供的服務嗎？</p>
+              <p class="text-primary fs-md-4 fs-6 fw-bold mb-7">現在你也可以成為寵物保姆囉！</p>
+              <button type="button" class="btn btn-orange-20 fs-md-9 fs-7 py-2 w-md-50 w-100">成為寵物保姆</button>
             </div>
           </div>
         </div>
