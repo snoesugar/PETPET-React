@@ -90,6 +90,9 @@
 }
 
 @include media-breakpoint-up(sm) { 
+  .fw-medium.fw-sm-bold {
+    font-weight: 700 !important;
+  }
   .w-100.w-sm-60 {
     width: 60% !important;
   }

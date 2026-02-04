@@ -135,72 +135,74 @@ const PetSitting = () => {
   return (
     <>
       {/* 寵物寄宿 */}
-      <div className="container-lg my-10">
-        <div className="row">
-          <div className="col-md-4 col-5 my-auto">
-            <h2 className="text-primary mb-md-4 mb-2">寵物寄宿</h2>
-            <p className="fs-6 fw-bold text-primary">給您的毛孩最舒適的環境</p>
+      <div className="container-lg my-sm-10">
+        <div className="row flex-sm-row-reverse">
+          <div className="col-md-8 col-sm-7">
+            <img className="img-fluid h-sm-352 object-fit-cover my-md-0 mt-sm-8 mt-0 mb-sm-6 mb-3" src={`${import.meta.env.BASE_URL}homestay-1.png`} alt="homestay-1" />
           </div>
-          <div className="col-md-8 col-7">
-            <img src={`${import.meta.env.BASE_URL}homestay-1.png`} alt="homestay-1" className="img-fluid" />
+          <div className="col-md-4 col-sm-5 my-auto text-sm-start text-center">
+            <h2 className="fs-sm-5 fw-bold text-primary mb-md-4 mb-sm-2 mb-1">寵物寄宿</h2>
+            <p className="fs-6 fw-sm-bold fw-medium text-primary mb-sm-0 mb-3">給您的毛孩最舒適的環境</p>
           </div>
         </div>
       </div>
       <div className="bg-yellow-20 mb-md-12 mb-10">
-        <div className="container-lg py-3 d-flex">
-          <div className="dropdown position-relative me-2" ref={animalRef}>
-            <button
-              type="button"
-              className="btn btn-white border dropdown-toggle text-gray-40 text-start"
-              onClick={() => setOpenAnimal(o => !o)}
-            >
-              {selectedAnimal}
-            </button>
-            {openAnimal && (
-              <ul className="dropdown-menu show">
-                {animalList.map(animal => (
-                  <li key={animal}>
-                    <button
-                      type="button"
-                      className="dropdown-item"
-                      onClick={() => {
-                        setSelectedAnimal(animal)
-                        setOpenAnimal(false)
-                      }}
-                    >
-                      {animal}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <div className="dropdown position-relative me-2" ref={cityRef}>
-            <button
-              type="button"
-              className="btn btn-white border dropdown-toggle text-gray-40 w-160 text-start"
-              onClick={() => setOpenCity(o => !o)}
-            >
-              {selectedCity}
-            </button>
-            {openCity && (
-              <ul className="dropdown-menu show">
-                {cityList.map(city => (
-                  <li key={city}>
-                    <button
-                      type="button"
-                      className="dropdown-item"
-                      onClick={() => {
-                        setSelectedCity(city)
-                        setOpenCity(false)
-                      }}
-                    >
-                      {city}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
+        <div className="container-lg d-sm-flex py-sm-3 py-4">
+          <div className="d-flex mb-sm-0 mb-2">
+            <div className="dropdown position-relative me-2" ref={animalRef}>
+              <button
+                type="button"
+                className="btn btn-white border dropdown-toggle text-gray-40 text-start"
+                onClick={() => setOpenAnimal(o => !o)}
+              >
+                {selectedAnimal}
+              </button>
+              {openAnimal && (
+                <ul className="dropdown-menu show">
+                  {animalList.map(animal => (
+                    <li key={animal}>
+                      <button
+                        type="button"
+                        className="dropdown-item"
+                        onClick={() => {
+                          setSelectedAnimal(animal)
+                          setOpenAnimal(false)
+                        }}
+                      >
+                        {animal}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="dropdown position-relative me-2" ref={cityRef}>
+              <button
+                type="button"
+                className="btn btn-white border dropdown-toggle text-gray-40 w-160 text-start"
+                onClick={() => setOpenCity(o => !o)}
+              >
+                {selectedCity}
+              </button>
+              {openCity && (
+                <ul className="dropdown-menu show">
+                  {cityList.map(city => (
+                    <li key={city}>
+                      <button
+                        type="button"
+                        className="dropdown-item"
+                        onClick={() => {
+                          setSelectedCity(city)
+                          setOpenCity(false)
+                        }}
+                      >
+                        {city}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
           <div className="d-flex gap-2">
             {/* 起始日期 */}
@@ -241,11 +243,11 @@ const PetSitting = () => {
         </div>
       </div>
       {/* 本月熱門住宿 */}
-      <div className="container-lg mb-md-12 mb-10">
-        <h3 className="fw-bold text-primary mb-3">本月熱門寄宿</h3>
+      <div className="container-lg mb-md-12 mb-sm-10 mb-8">
+        <h3 className="fw-bold text-primary mb-sm-3 mb-0">本月熱門寄宿</h3>
         <div className="row">
           {babysitters.map(sitter => (
-            <div className="col-4" key={sitter.name}>
+            <div className="col-sm-4 gy-3" key={sitter.name}>
               <ServiceCard
                 name={sitter.name}
                 services={sitter.services}
@@ -264,12 +266,12 @@ const PetSitting = () => {
           {
             reservationList.map((item) => {
               return (
-                <div className="col-md-3 col-4" key={item.title}>
+                <div className="col-md-3 col-sm-4 col-6" key={item.title}>
                   <div className="card shadow h-100">
                     <img src={item.gImage} className="card-img-top h-128 object-fit-cover" alt={item.title} />
                     <div className="card-body bg-gray-0 pt-2 pb-8">
                       <h5 className="fs-9 text-primary">{item.title}</h5>
-                      <div className="stars">
+                      <div className="stars mb-md-2 mb-sm-1 mb-2">
                         <span className="star"></span>
                         <span className="star"></span>
                         <span className="star"></span>
