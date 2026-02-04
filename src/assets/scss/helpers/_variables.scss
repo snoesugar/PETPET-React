@@ -405,7 +405,7 @@ $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  false; //true !default; custom
 $enable-validation-icons:     true !default;
-$enable-negative-margins:     false !default;
+$enable-negative-margins:     true; //false !default; custom
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
@@ -535,7 +535,7 @@ $grid-breakpoints: (
 
 // scss-docs-start container-max-widths
 $container-max-widths: (
-  sm: 540px,
+  sm: 375px,//540px, custom
   md: 768px,//720px, custom
   lg: 1100px,//960px, custom
   xl: 1280px,//1140px, custom

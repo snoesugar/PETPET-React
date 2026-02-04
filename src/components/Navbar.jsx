@@ -24,12 +24,12 @@ const Navbar = () => {
       <div className="container-lg">
         <nav className="navbar navbar-expand-sm">
           <div className="container-fluid px-0">
-            <Link className="navbar-brand text-yellow-10 fs-3 p-0" to="/">
+            <Link className="navbar-brand text-yellow-10 mx-sm-0 mx-auto fs-3 p-0" to="/">
               PETPET
             </Link>
             {/* 漢堡按鈕 */}
             <button
-              className="navbar-toggler"
+              className="navbar-toggler border-0"
               type="button"
               aria-expanded={openNav}
               onClick={() => setOpenNav(o => !o)}
