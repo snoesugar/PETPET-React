@@ -259,10 +259,11 @@ const Home = () => {
         </div>
       </div>
       {/* 線上預約 */}
-      <div className="container-lg mb-md-12 mb-10">
+      <div className="container-lg mb-md-12 mb-sm-10 mb-8">
         <h3 className="fw-bold text-primary mb-1">線上預約</h3>
         <p className="fs-7 text-primary mb-3">即時瞭解您的需求，安排最適合毛孩的寵物保姆！</p>
-        <div className="d-flex gap-1 h-350">
+        {/* sm以上載具 */}
+        <div className="d-sm-flex d-none gap-1 h-350">
           <Link to="/petsitting" className="position-relative w-31">
             <img
               src={`${import.meta.env.BASE_URL}index-5.jpeg`}
@@ -316,42 +317,123 @@ const Home = () => {
             </div>
           </a>
         </div>
+        {/* sm以下載具 */}
+        <div className="d-sm-none row gap-1">
+          <Link to="/petsitting" className="col-12">
+            <div className="position-relative h-132">
+              <img
+                src={`${import.meta.env.BASE_URL}index-5.jpeg`}
+                alt="index-5"
+                className="w-100 h-100 object-fit-cover rounded-1"
+              />
+              <div className="overlay d-flex justify-content-center align-items-center rounded-1">
+                <span className="text-white fs-6 fw-bold">寵物寄宿</span>
+              </div>
+            </div>
+          </Link>
+          <a href="#" className="col-12">
+            <div className="position-relative h-132">
+              <img
+                src={`${import.meta.env.BASE_URL}index-6.jpeg`}
+                alt="index-6"
+                className="w-100 h-100 object-fit-cover rounded-1"
+              />
+              <div className="overlay d-flex justify-content-center align-items-center rounded-1">
+                <span className="text-white fs-6 fw-bold">寵物美容</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" className="col-12">
+            <div className="position-relative h-132">
+              <img
+                src={`${import.meta.env.BASE_URL}index-7.jpeg`}
+                alt="index-7"
+                className="w-100 h-100 object-fit-cover rounded-1"
+              />
+              <div className="overlay d-flex justify-content-center align-items-center rounded-1">
+                <span className="text-white fs-6 fw-bold">寵物美容</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" className="col-12">
+            <div className="position-relative h-132">
+              <img
+                src={`${import.meta.env.BASE_URL}index-8.jpeg`}
+                alt="index-8"
+                className="w-100 h-100 object-fit-cover rounded-1"
+              />
+              <div className="overlay d-flex justify-content-center align-items-center rounded-1">
+                <span className="text-white fs-6 fw-bold">遛狗保姆</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" className="col-12">
+            <div className="position-relative h-132">
+              <img
+                src={`${import.meta.env.BASE_URL}index-3.jpeg`}
+                alt="index-3"
+                className="w-100 h-100 object-fit-cover rounded-1"
+              />
+              <div className="overlay d-flex justify-content-center align-items-center rounded-1">
+                <span className="text-white fs-6 fw-bold">寵物美容</span>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
       {/* PETPET目前已有 */}
-      <div className=" index-back-img mb-md-12 mb-10 py-12">
+      <div className=" index-back-img mb-md-12 mb-10 py-sm-12 pt-10 pb-9">
         <div className="container-lg text-white">
-          <h2 className="fw-bold mb-13">PETPET目前已有</h2>
-          <div className="row ps-3">
-            <div className="col-3 border-start pb-12">
-              <p className="fs-1 fw-bold mb-0">5278</p>
-              <p className="fs-7 fw-medium">人使用 PETPET</p>
+          <h2 className="fw-bold text-sm-start text-center mb-sm-13 mb-9">PETPET目前已有</h2>
+          <div className="row">
+            <div className="col-sm-3 mb-sm-0 mb-12">
+              <div className="text-sm-start text-center">
+                <div className="d-inline-block">
+                  <div className="border-start border-2 border-white ps-3 pb-sm-12 pb-3">
+                    <p className="text-start fs-1 fw-bold mb-0">5278</p>
+                    <p className="fs-7 fw-medium">人使用 PETPET</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-3 border-start pb-12">
-              <p className="fs-1 fw-bold mb-0">580</p>
-              <p className="fs-7 fw-medium">人成為寵物保母</p>
+            <div className="col-sm-3 mb-sm-0 mb-12">
+              <div className="text-sm-start text-center">
+                <div className="d-inline-block">
+                  <div className="border-start border-2 border-white ps-3 pb-sm-12 pb-3">
+                    <p className="text-start fs-1 fw-bold mb-0">580</p>
+                    <p className="fs-7 fw-medium">人成為寵物保母</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-3 border-start pb-12">
-              <p className="fs-1 fw-bold mb-0">10000+</p>
-              <p className="fs-7 fw-medium">已完成服務</p>
+            <div className="col-sm-3 mb-sm-0 mb-12">
+              <div className="text-sm-start text-center ms-sm-0 ms-7">
+                <div className="d-inline-block">
+                  <div className="border-start border-2 border-white ps-3 pb-sm-12 pb-3">
+                    <p className="text-start fs-1 fw-bold mb-0">10000+</p>
+                    <p className="text-start fs-7 fw-medium">已完成服務</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       {/* 預約流程 */}
-      <div className="container-lg mb-md-12 mb-10">
+      <div className="container-lg mb-md-12 mb-sm-10 mb-6">
         <h3 className="fw-bold text-primary mb-1">預約流程</h3>
-        <p className="fs-7 text-primary mb-5">輕鬆三步驟，立即獲取最佳服務！</p>
+        <p className="fs-7 text-primary mb-sm-5 mb-3">輕鬆三步驟，立即獲取最佳服務！</p>
         <div className="row">
-          <div className="col-4">
-            <p className="fs-7 text-primary">1.查詢想要的服務</p>
+          <div className="col-sm-4 mb-sm-0 mb-7">
+            <p className="fs-7 text-primary mb-sm-4 mb-1">1.查詢想要的服務</p>
             <img src={`${import.meta.env.BASE_URL}index-10.png`} alt="index-10" className="w-100" />
           </div>
-          <div className="col-4">
-            <p className="fs-7 text-primary">2.找到合適的保姆</p>
+          <div className="col-sm-4 mb-sm-0 mb-7">
+            <p className="fs-7 text-primary mb-sm-4 mb-1">2.找到合適的保姆</p>
             <img src={`${import.meta.env.BASE_URL}index-11.png`} alt="index-11" className="w-100" />
           </div>
-          <div className="col-4">
-            <p className="fs-7 text-primary">3.填寫資料完成預約</p>
+          <div className="col-sm-4 mb-sm-0 mb-7">
+            <p className="fs-7 text-primary mb-sm-4 mb-1">3.填寫資料完成預約</p>
             <img src={`${import.meta.env.BASE_URL}index-12.png`} alt="index-12" className="w-100" />
           </div>
         </div>
