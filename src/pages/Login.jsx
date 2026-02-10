@@ -22,12 +22,12 @@ const Login = () => {
     <>
       <Navbar />
       <div className="container-xl mb-12">
-        <div className="row justify-content-center mt-md-0 mt-14 pt-md-0 pt-9">
+        <div className="row justify-content-center mt-md-0 mt-sm-14 pt-md-0 pt-sm-9 pt-10">
           <div className="col-md-5 d-md-block d-none">
             <img className="img-fluid" src={`${import.meta.env.BASE_URL}index-1.png`} alt="index-1" />
           </div>
-          <div className="col-md-7 col-8 d-flex flex-column justify-content-center">
-            <h3 className="text-primary fw-bold mb-10">登入</h3>
+          <div className="col-md-7 col-sm-8 d-flex flex-column justify-content-center">
+            <h3 className="text-primary fw-bold mb-sm-10 mb-6">登入</h3>
             <form className="row">
               <div className="col-12 mb-3">
                 <label htmlFor="inputEmail4" className="form-label">電子信箱</label>
@@ -63,7 +63,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="col-12 mb-2">
-                <Link type="button" to="/user" className="btn btn-orange-20 py-2 w-md-32 w-100" onClick={handleLogin}>登入</Link>
+                <Link type="button" to="/user" className="btn btn-orange-20 fs-sm-9 fs-7 py-2 w-md-32 w-100" onClick={handleLogin}>登入</Link>
               </div>
               <a href="#" className="text-orange-20 text-decoration-none">還沒註冊嗎？</a>
             </form>

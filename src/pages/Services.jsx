@@ -318,8 +318,8 @@ const Services = () => {
 
   return (
     <>
-      <div className="container-lg mt-12">
-        <div className="row">
+      <div className="container-lg mt-sm-12">
+        <div className="row d-flex flex-sm-row flex-column-reverse">
           {/* 左側文字 */}
           {/* 電腦版 */}
           <aside className="col-6 position-relative d-md-block d-none">
@@ -369,7 +369,7 @@ const Services = () => {
             </div>
           </aside>
           {/* 手機板 */}
-          <aside className="col-6 d-md-none">
+          <aside className="col-sm-6 d-md-none">
             <div className="mb-md-10 mb-6">
               <div className="d-flex mb-4">
                 <h3 className="fw-bold text-primary mb-0 me-4">毛孩好家</h3>
@@ -381,7 +381,7 @@ const Services = () => {
                   <span className="star-big"></span>
                 </div>
               </div>
-              <p className="fs-6 fs-md-7 fw-bold text-primary mb-md-2 mb-3">給予毛孩最舒適的環境是我們的職責！</p>
+              <p className="fs-6 fs-md-7 fw-sm-bold fw-medium text-primary mb-md-2 mb-3">給予毛孩最舒適的環境是我們的職責！</p>
               <p className="fw-medium text-primary mb-0">已提供 52 筆服務、並獲得 30 個評價</p>
             </div>
             <div className="mb-md-8 mb-6">
@@ -405,44 +405,44 @@ const Services = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col-5">
+              <div className="col-sm-5 col-6">
                 <button type="button" className="fs-7 bg-white text-orange-20 border-1 border-orange-20 py-2 w-100 rounded-1">聯繫</button>
               </div>
-              <div className="col-7">
+              <div className="col-sm-7 col-6">
                 <button type="button" className="fs-7 bg-orange-20 text-white border-1 border-orange-20 py-2 w-100 rounded-1" onClick={() => modalInstance.current.show()}>立刻預約</button>
               </div>
             </div>
             {/* 內文 */}
-            <div className="pt-md-14 pt-10 text-primary mb-md-12 mb-10">
-              <div className="mb-md-8 mb-6">
+            <div className="pt-md-14 pt-sm-10 pt-8 text-primary mb-md-12 mb-sm-10 mb-8">
+              <div className="mb-md-8 mb-sm-6 mb-5">
                 <h5 className="fw-bold mb-3">關於</h5>
-                <p className="fs-6 fs-md-7 fw-medium">家中有5隻貓寶貝，對貓咪有瘋狂的熱愛 。 目前已經照顧超過30位狗狗貓咪朋友！對於我來說，能夠與你們相遇都是緣分！</p>
+                <p className="fs-9 fs-md-7 fs-sm-6 fw-medium">家中有5隻貓寶貝，對貓咪有瘋狂的熱愛 。 目前已經照顧超過30位狗狗貓咪朋友！對於我來說，能夠與你們相遇都是緣分！</p>
               </div>
-              <div className="mb-md-8 mb-6">
+              <div className="mb-md-8 mb-sm-6 mb-5">
                 <h5 className="fw-bold mb-3">經歷</h5>
-                <p className="fs-6 fs-md-7 fw-medium">曾接手過數次奶貓，照顧後送養成功，目前都是健健康康的毛孩。</p>
+                <p className="fs-9 fs-md-7 fs-sm-6 fw-medium">曾接手過數次奶貓，照顧後送養成功，目前都是健健康康的毛孩。</p>
               </div>
-              <div className="mb-md-8 mb-6">
+              <div className="mb-md-8 mb-sm-6 mb-5">
                 <h5 className="fw-bold mb-3">技能證照</h5>
-                <p className="fs-6 fs-md-7 fw-medium">寵物美容丙級技術證</p>
+                <p className="fs-9 fs-md-7 fs-sm-6 fw-medium">寵物美容丙級技術證</p>
               </div>
-              <div className="mb-md-8 mb-6">
+              <div className="mb-md-8 mb-sm-6 mb-5">
                 <h5 className="fw-bold mb-3">提供</h5>
-                <p className="fs-6 fs-md-7 fw-medium">貓砂盆、罐頭、乾飼料</p>
+                <p className="fs-9 fs-md-7 fs-sm-6 fw-medium">貓砂盆、罐頭、乾飼料</p>
               </div>
-              <div className="mb-md-8 mb-6">
+              <div className="mb-md-8 mb-sm-6 mb-5">
                 <h5 className="fw-bold mb-3">毛孩活動範圍</h5>
-                <p className="fs-6 fs-md-7 fw-medium">貓砂盆、罐頭、乾飼料</p>
+                <p className="fs-9 fs-md-7 fs-sm-6 fw-medium">貓砂盆、罐頭、乾飼料</p>
               </div>
-              <div className="mb-md-8 mb-6">
+              <div className="mb-md-8 mb-sm-6 mb-5">
                 <h5 className="fw-bold mb-3">服務地區</h5>
-                <p className="fs-6 fs-md-7 fw-medium">高雄市</p>
+                <p className="fs-9 fs-md-7 fs-sm-6 fw-medium">高雄市</p>
               </div>
             </div>
           </aside>
-          <main className="col-6">
+          <main className="col-sm-6">
             {/* 主圖 */}
-            <div className="mb-3">
+            <div className="mb-sm-3 mb-2">
               <img
                 src={mainImage}
                 alt="main"
@@ -450,7 +450,7 @@ const Services = () => {
               />
             </div>
             {/* 縮圖 */}
-            <div className="d-flex gap-2 mb-10">
+            <div className="d-flex gap-2 mb-sm-10 mb-8">
               {images.map((img, index) => (
                 <button
                   key={index}
@@ -515,7 +515,7 @@ const Services = () => {
                                 <span className="text-primary me-2">{people.user}</span>
                                 <span className="fs-10 text-gray-30">{people.date}</span>
                               </div>
-                              <div className="stars d-flex align-items-center mb-2">
+                              <div className="stars d-flex flex-wrap align-items-center mb-2">
                                 <span className="star-big"></span>
                                 <span className="star-big"></span>
                                 <span className="star-big"></span>
@@ -567,74 +567,78 @@ const Services = () => {
               </div>
             </div>
           </main>
-          {/* 手機板 */}
-          <div className="d-md-none">
-            {/* 飼主頻論 */}
-            <div className="mb-md-12 mb-10">
-              <h6 className="fs-5 fw-bold text-primary mb-6">飼主評論（30）</h6>
-              <div className="row gy-5 mb-2">
-                {commentList.map((people) => {
-                  return (
-                    <div className="col-6" key={people.user}>
-                      <div className="border border-2 rounded-1 py-3">
-                        <div className="d-flex">
-                          <div className="d-flex align-items-center img-square">
-                            <img className="ps-4" src={people.personImage} alt="user" />
+        </div>
+        {/* 手機板 */}
+        <div className="d-md-none">
+          {/* 飼主頻論 */}
+          <div className="mb-md-12 mb-sm-10 mb-8">
+            <h6 className="fs-5 fw-bold text-primary mb-6">飼主評論（30）</h6>
+            <div className="row gy-5 mb-2">
+              {commentList.map((people) => {
+                return (
+                  <div className="col-sm-6" key={people.user}>
+                    <div className="border border-2 rounded-1 py-3">
+                      <div className="d-flex">
+                        <div className="d-flex align-items-center img-square">
+                          <img className="ps-4" src={people.personImage} alt="user" />
+                        </div>
+                        <div className="ms-5">
+                          <div className="mb-sm-2 mb-3">
+                            <span className="text-primary me-2">{people.user}</span>
+                            <span className="fs-10 text-gray-30">{people.date}</span>
                           </div>
-                          <div className="ms-5">
-                            <div className="mb-2">
-                              <span className="text-primary me-2">{people.user}</span>
-                              <span className="fs-10 text-gray-30">{people.date}</span>
-                            </div>
-                            <div className="stars d-flex align-items-center mb-2">
-                              <span className="star-big"></span>
-                              <span className="star-big"></span>
-                              <span className="star-big"></span>
-                              <span className="star-big"></span>
-                              <span className="star-big"></span>
-                            </div>
-                            <p className="text-primary mb-0">{people.content}</p>
+                          <div className="stars d-flex flex-wrap align-items-center mb-2">
+                            <span className="star-big"></span>
+                            <span className="star-big"></span>
+                            <span className="star-big"></span>
+                            <span className="star-big"></span>
+                            <span className="star-big"></span>
                           </div>
+                          <p className="text-primary mb-0">{people.content}</p>
                         </div>
                       </div>
                     </div>
-                  )
-                })}
-              </div>
-              <div className="d-flex justify-content-end">
-                <button type="button" className="fs-9 border-0 bg-white text-primary fw-medium">查看更多</button>
-              </div>
+                  </div>
+                )
+              })}
             </div>
-            {/* 其他高雄寄宿 */}
-            <div className="mb-md-12 mb-10">
-              <h6 className="fs-5 fw-bold text-primary mb-6">
-                其他
-                <a href="#" className="text-orange-20 px-1">高雄市</a>
-                <a href="#" className="text-orange-20 pe-1">寄宿</a>
-                的寵物保姆
-              </h6>
-              <div className="d-flex flex-wrap gap-2">
-                {reservationList.map((item) => {
-                  return (
-                    <div className="w-32" key={item.title}>
-                      <div className="card shadow h-100">
-                        <img src={item.gImage} className="card-img-top h-128 object-fit-cover" alt={item.title} />
-                        <div className="card-body bg-gray-0 py-2 px-3">
-                          <h5 className="fs-9 text-primary">{item.title}</h5>
-                          <div className="stars mb-1">
-                            <span className="star"></span>
-                            <span className="star"></span>
-                            <span className="star"></span>
-                            <span className="star"></span>
-                            <span className="star"></span>
-                          </div>
-                          <p className="fs-10 text-primary pb-0">{item.service}</p>
+            <div className="d-flex justify-content-end">
+              <button type="button" className="fs-sm-9 fs-7 border-0 bg-white text-primary fw-medium">查看更多</button>
+            </div>
+          </div>
+          {/* 其他高雄寄宿 */}
+          <div className="mb-md-12 mb-10">
+            <h6 className="fs-5 fw-bold text-primary mb-6">
+              其他
+              <a href="#" className="text-orange-20 px-1">高雄市</a>
+              <a href="#" className="text-orange-20 pe-1">寄宿</a>
+              的寵物保姆
+            </h6>
+            <div className="d-flex flex-wrap justify-content-between gap-2">
+              {reservationList.map((item) => {
+                return (
+                  <div className="w-sm-32 w-48" key={item.title}>
+                    <div className="card shadow h-100">
+                      <img src={item.gImage} className="card-img-top h-128 object-fit-cover" alt={item.title} />
+                      <div className="card-body bg-gray-0 py-2 px-3">
+                        <h5 className="fs-9 text-primary">{item.title}</h5>
+                        <div className="stars mb-1">
+                          <span className="star"></span>
+                          <span className="star"></span>
+                          <span className="star"></span>
+                          <span className="star"></span>
+                          <span className="star"></span>
                         </div>
+                        <p className="fs-10 text-primary pb-0">{item.service}</p>
+                      </div>
+                      <div className="d-sm-none d-flex">
+                        <button type="button" className="bg-white text-primary border-0 py-3 w-50">聯繫</button>
+                        <button type="button" className="bg-white text-orange-20 border-0 py-3 w-50">預約</button>
                       </div>
                     </div>
-                  )
-                })}
-              </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -644,17 +648,33 @@ const Services = () => {
         <div className="modal-dialog modal-xl">
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
+              {/* sm以下的線條 */}
+              <div className="d-sm-none d-flex row text-center position-relative mb-md-6 mb-3">
+                <div className="step-line position-absolute w-100"></div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="fw-bold mt-1">預約項目</span>
+                </div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="mt-1">預約資料</span>
+                </div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="mt-1">付款資訊</span>
+                </div>
+              </div>
               <div className="row flex-row-reverse">
-                <h5 className="d-md-none text-primary fw-bold mb-6">預約項目</h5>
+                <h5 className="d-md-none text-primary fw-bold mb-sm-6 mb-3">預約項目</h5>
                 {/* 右邊欄位 */}
                 <div className="col-md-5 d-flex flex-md-column flex-row h-100 mb-md-0 mb-5">
                   <img
                     src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
-                    className="img-square h-md-150 w-md-150 rounded-1 object-fit-cover mb-md-2 mb-0"
+                    className="img-square h-md-150 w-md-150 hw-100 rounded-1 object-fit-cover mb-md-2 mb-0"
                     alt="homestay-3"
                   />
-                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-6">
-                    <div className="d-flex mb-2">
+                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-sm-6 ms-3">
+                    <div className="d-flex flex-sm-row flex-column mb-sm-2 mb-1">
                       <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
                       <div className="stars d-flex align-items-center">
                         <span className="star-big"></span>
@@ -674,7 +694,7 @@ const Services = () => {
                     </div>
                   </div>
                   <button
-                    className="btn btn-orange-10 w-100 rounded-1 py-2 mt-auto d-md-block d-none"
+                    className="d-md-block d-none btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
                     type="button"
                     onClick={() => {
                       modalInstance.current.hide() // 關閉第一個 Modal
@@ -687,7 +707,7 @@ const Services = () => {
                 {/* 左邊欄位 */}
                 <div className="col-md-7">
                   <h5 className="d-md-block d-none text-primary fw-bold mb-7">預約項目</h5>
-                  <div className="mb-6">
+                  <div className="">
                     <div className="row px-1 mb-6">
                       {serviceList.map(item => (
                         <div className="col-3 px-1" key={item.title}>
@@ -703,7 +723,7 @@ const Services = () => {
                             onClick={() => setService(item.title)}
                           >
                             <span
-                              className="material-icons fs-2 mb-2"
+                              className="material-icons fs-sm-2 fs-7 mb-sm-2 mb-1"
                               style={{
                                 color: service === item.title ? '#F0AD25' : '',
                               }}
@@ -716,50 +736,54 @@ const Services = () => {
                       ))}
                     </div>
                     <p className="mb-1">選擇日期</p>
-                    <div className="d-flex justify-content-between align-items-center gap-2 mb-5">
+                    <div className="d-flex flex-sm-row flex-column align-items-sm-center gap-2 mb-5">
                       {/* 起始日期 */}
-                      <DatePicker
-                        selected={startDate}
-                        onChange={(date) => {
-                          setStartDate(date)
-                          if (date > endDate) setEndDate(date)
-                        }}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={today} // 今天以前不能選
-                        highlightDates={[today]} // 高亮今天
-                        customInput={(
-                          <button className="btn btn-white border dropdown-toggle w-160 text-start text-gray-40">
-                            {startDate ? `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}` : '起始日期'}
-                          </button>
-                        )}
-                      />
-                      <span className="d-flex align-items-center">至</span>
+                      <div className="d-flex">
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => {
+                            setStartDate(date)
+                            if (date > endDate) setEndDate(date)
+                          }}
+                          selectsStart
+                          startDate={startDate}
+                          endDate={endDate}
+                          minDate={today} // 今天以前不能選
+                          highlightDates={[today]} // 高亮今天
+                          customInput={(
+                            <button className="btn btn-white border dropdown-toggle w-sm-160 w-230 text-start text-gray-40">
+                              {startDate ? `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}` : '起始日期'}
+                            </button>
+                          )}
+                        />
+                        <span className="d-flex align-items-center ms-2">至</span>
+                      </div>
                       {/* 結束日期 */}
-                      <DatePicker
-                        selected={endDate}
-                        onChange={date => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        highlightDates={[today]}
-                        customInput={(
-                          <button className="btn btn-white border dropdown-toggle w-160 text-start text-gray-40">
-                            {endDate ? `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}` : '結束日期'}
-                          </button>
-                        )}
-                      />
-                      <span>
-                        共
-                        {nights}
-                        晚
-                      </span>
+                      <div className="d-flex">
+                        <DatePicker
+                          selected={endDate}
+                          onChange={date => setEndDate(date)}
+                          selectsEnd
+                          startDate={startDate}
+                          endDate={endDate}
+                          minDate={startDate}
+                          highlightDates={[today]}
+                          customInput={(
+                            <button className="btn btn-white border dropdown-toggle w-sm-160 w-230 text-start text-gray-40">
+                              {endDate ? `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}` : '結束日期'}
+                            </button>
+                          )}
+                        />
+                        <span className="d-flex align-items-center ms-2">
+                          共
+                          {nights}
+                          晚
+                        </span>
+                      </div>
                     </div>
-                    <div className="d-flex mb-10">
+                    <div className="d-flex mb-sm-13 mb-8">
                       <div className="me-6">
-                        <label className="form-label">毛孩數量</label>
+                        <label className="form-label mb-sm-2 mb-1">毛孩數量</label>
                         <div className="position-relative">
                           <button
                             type="button"
@@ -791,11 +815,11 @@ const Services = () => {
                         </div>
                       </div>
                       <div className="me-6">
-                        <label className="form-label">您的毛孩是</label>
+                        <label className="form-label mb-sm-2 mb-1">您的毛孩是</label>
                         <div className="position-relative">
                           <button
                             type="button"
-                            className="btn btn-white border dropdown-toggle text-gray-40 text-start w-120"
+                            className="btn btn-white border dropdown-toggle text-gray-40 text-start w-sm-120 w-80"
                             onClick={() => setOpenAnimal(prev => !prev)}
                           >
                             {selectedAnimal}
@@ -821,11 +845,11 @@ const Services = () => {
                         </div>
                       </div>
                       <div className="me-6">
-                        <label className="form-label">年齡</label>
+                        <label className="form-label mb-sm-2 mb-1">年齡</label>
                         <div className="position-relative">
                           <button
                             type="button"
-                            className="btn btn-white border dropdown-toggle text-gray-40 w-128 text-start"
+                            className="btn btn-white border dropdown-toggle text-gray-40 w-sm-128 w-80 text-start"
                             onClick={() => setOpenAge(prev => !prev)}
                           >
                             {selectedAge}
@@ -854,7 +878,7 @@ const Services = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="row text-center position-relative mb-md-6 mb-7">
+                  <div className="d-sm-flex d-none row text-center position-relative mb-md-6 mb-7">
                     <div className="step-line position-absolute w-100"></div>
                     <div className="col-4 d-flex flex-column align-items-center position-relative">
                       <span className="step-dot"></span>
@@ -869,9 +893,18 @@ const Services = () => {
                       <span className="mt-1">付款資訊</span>
                     </div>
                   </div>
-                  <div className="text-end">
+                  <div className="text-sm-end text-center">
                     <button
-                      className="btn btn-orange-10 w-50 rounded-1 py-2 d-md-none"
+                      type="button"
+                      className="d-sm-none btn text-orange-10 p-0 mb-3"
+                      onClick={() => {
+                        modalInstance.current.hide()
+                      }}
+                    >
+                      返回
+                    </button>
+                    <button
+                      className="btn btn-orange-10 w-sm-50 w-100 rounded-1 py-2 d-md-none"
                       type="button"
                       onClick={() => {
                         modalInstance.current.hide() // 關閉第一個 Modal
@@ -892,17 +925,33 @@ const Services = () => {
         <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
+              {/* sm以下的線條 */}
+              <div className="d-sm-none d-flex row text-center position-relative mb-md-6 mb-3">
+                <div className="step-line position-absolute w-100"></div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="mt-1">預約項目</span>
+                </div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="fw-bold mt-1">預約資料</span>
+                </div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="mt-1">付款資訊</span>
+                </div>
+              </div>
               <div className="row flex-row-reverse">
-                <h5 className="d-md-none text-primary fw-bold mb-6">預約資料</h5>
+                <h5 className="d-md-none text-primary fw-bold mb-sm-6 mb-3">預約資料</h5>
                 {/* 右邊欄位 */}
-                <div className="col-md-5 d-flex flex-md-column flex-row h-100 mb-md-0 mb-5">
+                <div className="col-md-5 d-flex flex-md-column flex-row h-100 mb-md-0 mb-sm-5 mb-6">
                   <img
                     src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
-                    className="img-square h-md-150 w-md-150 rounded-1 object-fit-cover mb-md-2 mb-0"
+                    className="img-square h-md-150 w-md-150 hw-100 rounded-1 object-fit-cover mb-md-2 mb-0"
                     alt="homestay-3"
                   />
-                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-6">
-                    <div className="d-flex mb-2">
+                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-sm-6 ms-3">
+                    <div className="d-flex flex-sm-row flex-column mb-sm-2 mb-1">
                       <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
                       <div className="stars d-flex align-items-center">
                         <span className="star-big"></span>
@@ -944,7 +993,7 @@ const Services = () => {
                 <div className="col-md-7">
                   <h5 className="d-md-block d-none text-primary fw-bold mb-7">預約資料</h5>
                   <div className="mb-6">
-                    <form className="row" noValidate>
+                    <form className="row mb-sm-10 mb-3" noValidate>
                       {/* 毛孩姓名 */}
                       <div className="col-12">
                         <label htmlFor="petName" className="form-label mb-1">毛孩姓名</label>
@@ -1019,7 +1068,7 @@ const Services = () => {
                       </div>
                     </form>
                   </div>
-                  <div className="row text-center position-relative mb-6">
+                  <div className="d-sm-flex d-none row text-center position-relative mb-6">
                     <div className="step-line position-absolute w-100"></div>
                     <div className="col-4 d-flex flex-column align-items-center position-relative">
                       <span className="step-dot"></span>
@@ -1034,10 +1083,10 @@ const Services = () => {
                       <span className="mt-1">付款資訊</span>
                     </div>
                   </div>
-                  <div className="text-end">
+                  <div className="text-sm-end text-center">
                     <button
                       type="button"
-                      className="btn text-orange-10 p-0 mb-md-4 mb-0 me-6 d-md-none"
+                      className="btn text-orange-10 p-0 mb-md-4 mb-sm-0 mb-3 me-sm-6 me-0 d-md-none"
                       onClick={() => {
                         modalStep2Instance.current.hide() // 關閉第二個 Modal
                         modalInstance.current.show() // 打開第一個 Modal
@@ -1047,7 +1096,7 @@ const Services = () => {
                       返回
                     </button>
                     <button
-                      className="btn btn-orange-10 w-50 rounded-1 py-2 d-md-none"
+                      className="btn btn-orange-10 w-sm-50 w-100 rounded-1 py-2 d-md-none"
                       type="button"
                       onClick={handleStep2Next}
                     >
@@ -1065,17 +1114,33 @@ const Services = () => {
         <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
-              <h5 className="d-md-none text-primary fw-bold mb-6">付款資訊</h5>
+              {/* sm以下的線條 */}
+              <div className="d-sm-none d-flex row text-center position-relative mb-3">
+                <div className="step-line position-absolute w-100"></div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="mt-1">預約項目</span>
+                </div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="mt-1">預約資料</span>
+                </div>
+                <div className="col-4 d-flex flex-column align-items-center position-relative">
+                  <span className="step-dot"></span>
+                  <span className="fw-bold mt-1">付款資訊</span>
+                </div>
+              </div>
+              <h5 className="d-md-none text-primary fw-bold mb-sm-6 mb-3">付款資訊</h5>
               <div className="row flex-row-reverse">
                 {/* 右邊欄位 */}
-                <div className="col-md-5 d-md-flex d-none flex-md-column flex-row h-100 mb-md-0 mb-5">
+                <div className="col-md-5 d-md-flex d-sm-none d-flex flex-md-column flex-row h-100 mb-md-0 mb-sm-5 mb-6">
                   <img
                     src={`${import.meta.env.BASE_URL}homestay-3.jpeg`}
-                    className="img-square h-md-150 w-md-150 rounded-1 object-fit-cover mb-md-2 mb-0"
+                    className="img-square h-md-150 w-md-150 hw-100 rounded-1 object-fit-cover mb-md-2 mb-0"
                     alt="homestay-3"
                   />
-                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-6">
-                    <div className="d-flex mb-2">
+                  <div className="d-flex flex-column justify-content-center ms-md-0 ms-sm-6 ms-3">
+                    <div className="d-flex flex-sm-row flex-column mb-sm-2 mb-1">
                       <h6 className="fw-bold text-primary me-2 mb-0">毛孩好家</h6>
                       <div className="stars d-flex align-items-center">
                         <span className="star-big"></span>
@@ -1116,7 +1181,7 @@ const Services = () => {
                 <div className="col-md-7">
                   <h5 className="d-md-block d-none text-primary fw-bold mb-7">付款資訊</h5>
                   <div className="mb-6">
-                    <form className="row mb-md-0 pb-md-0 pb-11 mb-14">
+                    <form className="row mb-md-0 pb-md-0 pb-11 mb-sm-14 mb-1">
                       {/* 信用卡帳號 */}
                       <div className="col-12">
                         <label htmlFor="account" className="form-label mb-1">信用卡帳號</label>
@@ -1151,7 +1216,7 @@ const Services = () => {
                         </div>
                       </div>
                       {/* 安全碼 */}
-                      <div className="col-12 mb-10 pb-6">
+                      <div className="col-12 mb-sm-13 mb-7 pb-sm-6">
                         <label htmlFor="email" className="form-label mb-1">安全碼</label>
                         <input
                           type="password"
@@ -1169,9 +1234,8 @@ const Services = () => {
                       </div>
                     </form>
                   </div>
-                  <div className="row text-center position-relative mb-6">
+                  <div className="d-sm-flex d-none row text-center position-relative mb-6">
                     <div className="step-line position-absolute w-100"></div>
-
                     <div className="col-4 d-flex flex-column align-items-center position-relative">
                       <span className="step-dot"></span>
                       <span className="mt-1">預約項目</span>
@@ -1185,10 +1249,10 @@ const Services = () => {
                       <span className="fw-bold mt-1">付款資訊</span>
                     </div>
                   </div>
-                  <div className="text-end">
+                  <div className="text-sm-end text-center">
                     <button
                       type="button"
-                      className="btn text-orange-10 p-0 mb-md-4 mb-0 me-6 d-md-none"
+                      className="btn text-orange-10 p-0 mb-md-4 mb-sm-0 mb-2 me-sm-6 d-md-none"
                       onClick={() => {
                         modalStep3Instance.current.hide()
                         modalStep2Instance.current.show()
@@ -1197,7 +1261,7 @@ const Services = () => {
                       返回
                     </button>
                     <button
-                      className="btn btn-orange-10 w-50 rounded-1 py-2 d-md-none"
+                      className="btn btn-orange-10 w-sm-50 w-100 rounded-1 py-2 d-md-none"
                       type="button"
                       onClick={handleStep3Next}
                     >
@@ -1220,11 +1284,11 @@ const Services = () => {
                   pets
                 </span>
                 <h5 className="text-primary fs-6 fw-bold mb-3">預約成功!</h5>
-                <p className="text-primary mb-8">您可以在會員頁找到您的預約資料並修改或取消預約。</p>
+                <p className="text-primary text-sm-center text-start mb-sm-8 mb-4">您可以在會員頁找到您的預約資料並修改或取消預約。</p>
                 <Link
                   to="/"
                   type="button"
-                  className="btn btn-orange-10 w-48 mx-auto py-2 rounded-1"
+                  className="btn btn-orange-10 w-sm-48 w-100 fs-sm-9 fs-7 mx-auto py-2 rounded-1"
                   onClick={() => {
                     modalStep4Instance.current.hide() // 隱藏 Modal 及 backdrop
                   }}
