@@ -124,7 +124,6 @@ const Services = () => {
   // Step3：付款資料
   const [cardErrors, setCardErrors] = useState({})
   const [cardValidated, setCardValidated] = useState(false)
-  const [showModal, setShowModal] = useState(false)
 
   const serviceRef = useRef(null)
   const serviceStep2Ref = useRef(null)
@@ -134,6 +133,23 @@ const Services = () => {
   const modalStep2Instance = useRef(null)
   const modalStep3Instance = useRef(null)
   const modalStep4Instance = useRef(null)
+
+  const blurActiveElement = () => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
+  }
+
+  const hideModalSafely = (modalRef) => {
+    blurActiveElement()
+    modalRef?.current?.hide()
+  }
+
+  const switchModalSafely = (fromModalRef, toModalRef) => {
+    blurActiveElement()
+    fromModalRef?.current?.hide()
+    toModalRef?.current?.show()
+  }
 
   // 填預約資料
   const [formData, setFormData] = useState({
@@ -257,8 +273,7 @@ const Services = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       // 驗證通過 → 切到下一個 Modal
-      modalStep2Instance.current.hide()
-      modalStep3Instance.current.show()
+      switchModalSafely(modalStep2Instance, modalStep3Instance)
       resetValidation()
     }
   }
@@ -270,14 +285,16 @@ const Services = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       // 驗證通過 → 切到下一個 Modal
-      modalStep3Instance.current.hide()
-      modalStep4Instance.current.show()
+      switchModalSafely(modalStep3Instance, modalStep4Instance)
       resetValidation()
     }
   }
   // 關掉 Modal
   const closeModal = () => {
-    setShowModal(false)
+    hideModalSafely(modalInstance)
+    hideModalSafely(modalStep2Instance)
+    hideModalSafely(modalStep3Instance)
+    hideModalSafely(modalStep4Instance)
     resetValidation()
   }
   // 清空驗證錯誤
@@ -644,7 +661,7 @@ const Services = () => {
         </div>
       </div>
       {/* 預約項目 Modal */}
-      <div className={`modal fade ${showModal ? 'show d-block' : ''}`} tabIndex="-1" ref={serviceRef}>
+      <div className="modal fade" tabIndex="-1" ref={serviceRef}>
         <div className="modal-dialog modal-xl">
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
@@ -697,8 +714,7 @@ const Services = () => {
                     className="d-md-block d-none btn btn-orange-10 w-100 rounded-1 py-2 mt-auto"
                     type="button"
                     onClick={() => {
-                      modalInstance.current.hide() // 關閉第一個 Modal
-                      modalStep2Instance.current.show() // 打開第二個 Modal
+                      switchModalSafely(modalInstance, modalStep2Instance)
                     }}
                   >
                     下一步
@@ -898,7 +914,7 @@ const Services = () => {
                       type="button"
                       className="d-sm-none btn text-orange-10 p-0 mb-3"
                       onClick={() => {
-                        modalInstance.current.hide()
+                        hideModalSafely(modalInstance)
                       }}
                     >
                       返回
@@ -907,8 +923,7 @@ const Services = () => {
                       className="btn btn-orange-10 w-sm-50 w-100 rounded-1 py-2 d-md-none"
                       type="button"
                       onClick={() => {
-                        modalInstance.current.hide() // 關閉第一個 Modal
-                        modalStep2Instance.current.show() // 打開第二個 Modal
+                        switchModalSafely(modalInstance, modalStep2Instance)
                       }}
                     >
                       下一步
@@ -974,8 +989,7 @@ const Services = () => {
                     type="button"
                     className="btn text-orange-10 p-0 mb-4 d-md-block d-none"
                     onClick={() => {
-                      modalStep2Instance.current.hide() // 關閉第二個 Modal
-                      modalInstance.current.show() // 打開第一個 Modal
+                      switchModalSafely(modalStep2Instance, modalInstance)
                       resetValidation()
                     }}
                   >
@@ -1088,8 +1102,7 @@ const Services = () => {
                       type="button"
                       className="btn text-orange-10 p-0 mb-md-4 mb-sm-0 mb-3 me-sm-6 me-0 d-md-none"
                       onClick={() => {
-                        modalStep2Instance.current.hide() // 關閉第二個 Modal
-                        modalInstance.current.show() // 打開第一個 Modal
+                        switchModalSafely(modalStep2Instance, modalInstance)
                         resetValidation()
                       }}
                     >
@@ -1163,8 +1176,7 @@ const Services = () => {
                     type="button"
                     className="btn text-orange-10 p-0 mb-4 d-md-block d-none"
                     onClick={() => {
-                      modalStep3Instance.current.hide()
-                      modalStep2Instance.current.show()
+                      switchModalSafely(modalStep3Instance, modalStep2Instance)
                     }}
                   >
                     返回
@@ -1254,8 +1266,7 @@ const Services = () => {
                       type="button"
                       className="btn text-orange-10 p-0 mb-md-4 mb-sm-0 mb-2 me-sm-6 d-md-none"
                       onClick={() => {
-                        modalStep3Instance.current.hide()
-                        modalStep2Instance.current.show()
+                        switchModalSafely(modalStep3Instance, modalStep2Instance)
                       }}
                     >
                       返回
@@ -1280,7 +1291,7 @@ const Services = () => {
           <div className="modal-content">
             <div className="modal-body px-7 py-14 my-md-10 my-14">
               <div className="row text-center my-9">
-                <span class="material-symbols-outlined display-1 text-yellow-20">
+                <span className="material-symbols-outlined display-1 text-yellow-20">
                   pets
                 </span>
                 <h5 className="text-primary fs-6 fw-bold mb-3">預約成功!</h5>
@@ -1290,7 +1301,7 @@ const Services = () => {
                   type="button"
                   className="btn btn-orange-10 w-sm-48 w-100 fs-sm-9 fs-7 mx-auto py-2 rounded-1"
                   onClick={() => {
-                    modalStep4Instance.current.hide() // 隱藏 Modal 及 backdrop
+                    hideModalSafely(modalStep4Instance)
                   }}
                 >
                   前往會員頁
