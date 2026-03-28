@@ -109,6 +109,10 @@
 }
 
 /*服務項目Modal*/
+.service-modal-dialog {
+  --bs-modal-width: min(1100px, calc(100% - 2rem));
+}
+
 .step-line {
   height: 2px;
   background-color: #DA3A1A;

@@ -662,7 +662,7 @@ const Services = () => {
       </div>
       {/* 預約項目 Modal */}
       <div className="modal fade" tabIndex="-1" ref={serviceRef}>
-        <div className="modal-dialog modal-xl">
+        <div className="modal-dialog modal-xl service-modal-dialog">
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
               {/* sm以下的線條 */}
@@ -937,7 +937,7 @@ const Services = () => {
       </div>
       {/* 預約資料 Modal */}
       <div className="modal fade" tabIndex="-1" ref={serviceStep2Ref} onClick={closeModal}>
-        <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
+        <div className="modal-dialog modal-xl service-modal-dialog" onClick={e => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
               {/* sm以下的線條 */}
@@ -1124,7 +1124,7 @@ const Services = () => {
       </div>
       {/* 付款資訊 Modal */}
       <div className="modal fade" tabIndex="-1" ref={serviceStep3Ref} onClick={closeModal}>
-        <div className="modal-dialog modal-xl" onClick={e => e.stopPropagation()}>
+        <div className="modal-dialog modal-xl service-modal-dialog" onClick={e => e.stopPropagation()}>
           <div className="modal-content">
             <div className="modal-body px-7 pt-10 pb-9">
               {/* sm以下的線條 */}
@@ -1287,7 +1287,7 @@ const Services = () => {
       </div>
       {/* 預約成功! Modal */}
       <div className="modal fade" tabIndex="-1" ref={serviceStep4Ref}>
-        <div className="modal-dialog modal-xl">
+        <div className="modal-dialog modal-xl service-modal-dialog">
           <div className="modal-content">
             <div className="modal-body px-7 py-14 my-md-10 my-14">
               <div className="row text-center my-9">
